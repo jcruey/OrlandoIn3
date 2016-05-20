@@ -44,7 +44,7 @@ $(document).ready(function () {
 
 	$('#animalButtons').on('click', '.animalBtn', function() {
         var animal = $(this).data('name');
-        var queryURL = "https://api.foursquare.com/v2/venues/explore?near=Orlando,Fl&Photos=1&openNow=1&query=" + animal + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20130815";
+        var queryURL = "https://api.foursquare.com/v2/venues/explore?near=Orlando,Fl&Photos=1&openNow=1&venuePhotos=1&query=" + animal + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20130815";
 
         $.ajax({
                 url: queryURL,
@@ -59,7 +59,14 @@ $(document).ready(function () {
 
                 //------------put step 2 in between these dashes--------------------
                 var results = response.data;
-                console.log(response);
+                // console.log(response.response.groups[0].items[2].venue.photos.groups[0].items[0]);
+                console.log(response.response.groups[0].items[2].venue.photos.groups[0].items[0].prefix+"width"+response.response.groups[0].items[2].venue.photos.groups[0].items[0].width+response.response.groups[0].items[2].venue.photos.groups[0].items[0].suffix);
+                console.log(response.response.groups[0].items[2].venue.name);
+                console.log(response.response.groups[0].items[2].venue.id);
+                console.log(response.response.groups[0].items[2].venue.hours.status);
+                console.log(response.response.groups[0].items[2].venue.price.currency);
+                console.log(response.response.groups[0].items[2].venue.location.formattedAddress);
+                console.log(response.response.groups[0].items[2].venue.rating);
                 //--------------------------------
 
                 // for (var i = 0; i < results.length; i++) {
