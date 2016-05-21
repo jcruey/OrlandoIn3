@@ -1,5 +1,6 @@
 $(document).ready(function () {
 	// Initial array of GIFs
+//<<<<<<< HEAD
 	var gifs = ['Asian', 'Mexican', 'Italian', 'Steak', "Sushi", "Pizza", 'Cuban', 'Pasta', 'Chinese'];
 
 	// Function to create the buttons that will pull GIFs from Giphy
@@ -41,14 +42,54 @@ $(document).ready(function () {
 		
 		// Our array then runs which handles the processing of our movie array
 		renderButtons();
+// =======
+	var categories = ['Asian', 'Mexican', 'Italian', 'Steak', "Sushi", "Pizza", 'Cuban', 'Pasta', 'Chinese'];
+
+	// Function to create the menu that will pull choices from FS Api
+	function renderMenu(){ 
+
+		// clears the div prior to adding new drop down
+		$('#catChoices').empty();
+
+		// Loops through the array of categories
+		for (var i = 0; i < categories.length; i++){
+
+		    var a = $('<option>'); // This code creates the list items for the dropdown
+            a.text(categories[i]); // Provided the initial button text
+            a.attr('data-name', categories[i]); // Adds data attribute with category name
+            a.addClass('choiceBtn'); // Adds a class for later use as selector to the menu choice
+		    $('#catChoices').append(a); // Added the dropdown choices to the HTML
+		} 
+	}
+    renderMenu();
+	// ========================================================
+
+	// This function handles events where one button is clicked
+	$('#addCategory').on('click', function(){
+
+		// This line of code will grab the input from the textbox
+		var newCat = $('#category-input').val().trim();
+
+		// The movie from the textbox is then added to our array
+		categories.push(newCat);
+		
+		// Our array then runs which handles the processing of our movie array
+		renderMenu();
+// >>>>>>> 1267b197f50241ca1aad2a9194889161d1ee4249
 
 		// We have this line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page
 		return false;
 	})
 
+//<<<<<<< HEAD
 	$('#animalButtons').on('click', '.animalBtn', function() {
         var animal = $(this).data('name');
         var queryURL = "https://api.foursquare.com/v2/venues/explore?near=Orlando,Fl&Photos=1&openNow=1&venuePhotos=1&query=" + animal + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20130815";
+
+
+	$('#venueChoices').on('change', '#catChoices', function() {
+        var choice = $.trim($('#catChoices option:selected').html());
+        var queryURL = "https://api.foursquare.com/v2/venues/explore?near=Orlando,Fl&Photos=1&openNow=1&venuePhotos=1&query=" + choice + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20130815";
 
         $.ajax({
                 url: queryURL,
@@ -64,6 +105,7 @@ $(document).ready(function () {
                 //------------put step 2 in between these dashes--------------------
                 var results = response.data;
                 // console.log(response.response.groups[0].items[2].venue.photos.groups[0].items[0]);
+// <<<<<<< HEAD
                 console.log(response.response.groups[0].items[2].venue.photos.groups[0].items[0].prefix+"width"+response.response.groups[0].items[2].venue.photos.groups[0].items[0].width+response.response.groups[0].items[2].venue.photos.groups[0].items[0].suffix);
                 console.log(response.response.groups[0].items[2].venue.name);
                 console.log(response.response.groups[0].items[2].venue.id);
@@ -71,10 +113,20 @@ $(document).ready(function () {
                 console.log(response.response.groups[0].items[2].venue.price.currency);
                 console.log(response.response.groups[0].items[2].venue.location.formattedAddress);
                 console.log(response.response.groups[0].items[2].venue.rating);
+// =======
+                // console.log(response.response.groups[0].items[2].venue.photos.groups[0].items[0].prefix+"width"+response.response.groups[0].items[2].venue.photos.groups[0].items[0].width+response.response.groups[0].items[2].venue.photos.groups[0].items[0].suffix);
+                // console.log(response.response.groups[0].items[2].venue.name);
+                // console.log(response.response.groups[0].items[2].venue.id);
+                // console.log(response.response.groups[0].items[2].venue.hours.status);
+                // console.log(response.response.groups[0].items[2].venue.price.currency);
+                // console.log(response.response.groups[0].items[2].venue.location.formattedAddress);
+                // console.log(response.response.groups[0].items[2].venue.rating);
+// >>>>>>> 1267b197f50241ca1aad2a9194889161d1ee4249
                 //--------------------------------
 
                 // for (var i = 0; i < results.length; i++) {
 
+// <<<<<<< HEAD
                     /* step 3: 
                         * uncomment the for loop above and the closing curly bracket below
                         * make a div and reference it in a variable named animalDiv
@@ -95,22 +147,42 @@ $(document).ready(function () {
                     // var animalDiv = $("<div class='col-lg-4'>");
                     // var p = $('<p>').text("Rating: " + results[i].rating);
                     // var animalImage = $('<img>').attr('src', results[i].images.fixed_height_still.url);
+// =======
+                    //------------Writes retrieved API data to page--------------------
+                    var venueDiv = $("<div class='col-lg-4'>");
+                    var venueName = $('<p>').text("Venue Name: " + response.response.groups[0].items[2].venue.name);
+                    var rating = $('<p>').text("Rating: " + response.response.groups[0].items[2].venue.rating)
+                    var price = $('<p>').text("Price: " + response.response.groups[0].items[2].venue.price.currency);
+                    var address = $('<p>').text("Address: " + response.response.groups[0].items[2].venue.location.formattedAddress);
+                    var venueImage = $('<img>').attr('src', response.response.groups[0].items[2].venue.photos.groups[0].items[0].prefix+"500x300"+response.response.groups[0].items[2].venue.photos.groups[0].items[0].suffix);
+// >>>>>>> 1267b197f50241ca1aad2a9194889161d1ee4249
                     // animalImage.attr('data-still', results[i].images.fixed_height_still.url);
                     // animalImage.attr('data-animate', results[i].images.fixed_height.url);
                     // animalImage.attr('data-state', 'still');
                     // animalImage.addClass('animalGif');
+// <<<<<<< HEAD
                     // animalDiv.append(p);
                     // animalDiv.append(animalImage);
                     // // gifRow.append(animalDiv);
                     // $('#animals').prepend(animalDiv);
                     // console.log(gifRow);
                     // console.log(animalDiv);
+// =======
+                     venueDiv.append(venueImage);
+                     venueDiv.append(venueName);
+                     venueDiv.append(rating);
+                     venueDiv.append(price);
+                     venueDiv.append(address);
+                    $('#choices').prepend(venueDiv);
+                    // console.log(venueDiv);
+// >>>>>>> 1267b197f50241ca1aad2a9194889161d1ee4249
 
                     //--------------------------------
                 // }
 
             });
     });
+// <<<<<<< HEAD
       $('#animals').on('click', '.animalGif', function(){
             //STEP ONE: study the html above. Look at all the data attributes. Run the file in the browser. Look at the images. After you fill in steps 1 and 2 you'll be able to pause gifs from giphy.
 
@@ -144,4 +216,7 @@ $(document).ready(function () {
 
             //STEP FOUR: open the file in the browser and click on the images. Then click again to pause.
         });
-});
+// =======
+      
+// >>>>>>> 1267b197f50241ca1aad2a9194889161d1ee4249
+})
