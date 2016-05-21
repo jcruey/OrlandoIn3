@@ -21,3 +21,35 @@ body {
 #step1 {
 	margin-top:20%;
 }
+#foodImage {
+	float:right;
+}
+.dropdown {
+	margin-bottom: 8%;
+}
+#restaurants {
+	visibility: hidden;
+	margin-left: 4%;
+}
+/*Step 2 Page*/
+#step2 {
+	margin-top:20%;
+}
+#funImage {
+	margin-left: 38%;
+	margin-bottom: 5%;
+}
+#places {
+	visibility: hidden;
+	margin-left: 4%;
+}
+/*Step 3 Page*/
+#step3 {
+	margin-top:20%;
+}
+#foodResult {
+	margin-left: 25%;
+}
+#funResult {
+	margin-left: 25%;
+}
