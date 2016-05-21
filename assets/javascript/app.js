@@ -6,21 +6,25 @@ $(document).ready(function () {
 	function renderButtons(){ 
 
 		// clears the div prior to adding new buttons (this is necessary otherwise you will have repeat buttons)
-		$('#animalButtons').empty();
+		$('#catChoices').empty();
 
 		// Loops through the array of movies
 		for (var i = 0; i < gifs.length; i++){
 
 			// Then dynamicaly generates buttons for each movie in the array
+                            // <li><a href="#">Action</a></li>
+                            // <li><a href="#">Another action</a></li>
+                            // <li><a href="#">Something else here</a></li>
+                            // <li role="separator" class="divider"></li>
+                            // <li><a href="#">Separated link</a></li>
 
 			// Note the jQUery syntax here... 
-		    var a = $('<button>') // This code $('<button>') is all jQuery needs to create the beginning and end tag. (<button></button>)
-		    a.addClass('btn btn-info'); // Added a class
-            a.attr('type', 'button'); 
-		    a.attr('data-name', gifs[i]); // Added a data-attribute
-            a.addClass('animalBtn');
-		    a.text(gifs[i]); // Provided the initial button text
-		    $('#animalButtons').append(a); // Added the button to the HTML
+		    var a = $('<li>'); // This code $('<button>') is all jQuery needs to create the beginning and end tag. (<button></button>)
+		    var b = $('<a>');
+            b.attr('href', '#');
+            b.text(gifs[i]); // Provided the initial button text
+            a.prepend(b)
+		    $('#catChoices').append(a); // Added the button to the HTML
 		} 
 	}
     renderButtons();
