@@ -71,7 +71,7 @@ $(document).ready(function () {
                     var rating = $('<p>').text("Rating: " + response.response.groups[0].items[2].venue.rating)
                     var price = $('<p>').text("Price: " + response.response.groups[0].items[2].venue.price.currency);
                     var address = $('<p>').text("Address: " + response.response.groups[0].items[2].venue.location.formattedAddress);
-                    var venueImage = $('<img>').attr('src', response.response.groups[0].items[2].venue.photos.groups[0].items[0].prefix+"width"+response.response.groups[0].items[2].venue.photos.groups[0].items[0].width+response.response.groups[0].items[2].venue.photos.groups[0].items[0].suffix);
+                    var venueImage = $('<img>').attr('src', response.response.groups[0].items[2].venue.photos.groups[0].items[0].prefix+"500x300"+response.response.groups[0].items[2].venue.photos.groups[0].items[0].suffix);
                     // animalImage.attr('data-still', results[i].images.fixed_height_still.url);
                     // animalImage.attr('data-animate', results[i].images.fixed_height.url);
                     // animalImage.attr('data-state', 'still');
