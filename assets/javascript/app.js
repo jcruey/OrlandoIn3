@@ -124,7 +124,7 @@ $(document).ready(function () {
                     venueDiv.append('<h3>'+apidataReturn[i].venueName+'</h3>');
                     venueDiv.append('<p>Rating: '+apidataReturn[i].rating+'</p>');
                     venueDiv.append('<p>Price: '+apidataReturn[i].price+'</p>');
-                    venueDiv.append('<p>Address: '+apidataReturn[i].address+'</p><br>');
+                    venueDiv.append('<p>Address: '+apidataReturn[i].address[0]+'<br>'+apidataReturn[i].address[1]+'<br>'+apidataReturn[i].address[2]+'</p><br>');
                     venueDiv.append(selectBtn);
                 $('#fsquareResults').prepend(venueDiv);
 
