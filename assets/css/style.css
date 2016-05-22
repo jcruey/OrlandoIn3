@@ -20,6 +20,10 @@ body {
 /*Step 1 Page*/
 #step1 {
 	margin-top:20%;
+	padding-top: 20px;
+	width:100%;
+	/*background-color: red;
+	height:650px;*/
 }
 #foodImage {
 	float:right;
@@ -28,8 +32,19 @@ body {
 	margin-bottom: 8%;
 }
 #restaurants {
-	visibility: hidden;
+	/*visibility: hidden;*/
 	margin-left: 4%;
+}
+#fsquareResults {
+	padding-top: 30px; 					
+	color: white;
+	border-bottom:	solid 1px white;
+}
+#fsquareResults img {
+	color: white;
+	border:	solid 4px #1e90ff;
+	/*padding: 10px;*/
+	width: 80%;
 }
 /*Step 2 Page*/
 #step2 {
