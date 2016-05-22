@@ -1,6 +1,6 @@
 $(document).ready(function () {
-	// Initial array of GIFs
-	var app = {
+    // Initial array of GIFs
+    var app = {
      choice: "", 
      price: "",   
      foodType: ['Japanese', 'American', 'Burgers', 'Vegetarian', 'Seafood', 'Mexican', 'Italian', 'Sushi', 'Steakhouse', "Pizza", 'Cuban', 'Pasta', 'Chinese'],
@@ -9,26 +9,26 @@ $(document).ready(function () {
 
  
 
-	// Function to create the menu that will pull choices from FS Api
-	renderfoodType: function (){ 
+    // Function to create the menu that will pull choices from FS Api
+    renderfoodType: function (){ 
 
-		// clears the div prior to adding new drop down
-		$('#foodChoices').empty();
+        // clears the div prior to adding new drop down
+        $('#foodChoices').empty();
 
-		// Loops through the array of categories
-		for (var i = 0; i < app.foodType.length; i++){
+        // Loops through the array of categories
+        for (var i = 0; i < app.foodType.length; i++){
 
-		    var a = $('<option>'); // This code creates the list items for the dropdown
+            var a = $('<option>'); // This code creates the list items for the dropdown
             a.text(app.foodType[i]); // Provided the initial button text
             a.attr('data-name', app.foodType[i]); // Adds data attribute with category name
             a.addClass('foodBtn'); // Adds a class for later use as selector to the menu choice
-		    $('#foodChoices').append(a); // Added the dropdown choices to the HTML
-		}
+            $('#foodChoices').append(a); // Added the dropdown choices to the HTML
+        }
 
         $('#foodChoices').on('change', function() {
             app.choice = $.trim($('#foodChoices option:selected').html());
         });
-	},
+    },
 
     
 
@@ -61,7 +61,7 @@ $(document).ready(function () {
         });
     }
 
-	}
+    }
     app.renderfoodType();
     app.renderpriceType();
   
