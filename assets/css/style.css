@@ -1,0 +1,28 @@
+body {
+	background-image:url(../images/2.jpg);
+	background-size:cover;	
+}
+#logoRow {
+	margin-top:22%;
+	margin-left:45%;
+}
+#formRow {
+	margin-left: 35%;
+}
+.form-control {
+	width:300px !important;
+}
+#clickButton {
+	margin-left: 18%;
+}
+#fsquareResults {
+	padding-top: 30px; 					
+	color: white;
+	border-bottom:	solid 1px white;
+}
+#fsquareResults img {
+	color: white;
+	border:	solid 4px #1e90ff;
+	/*padding: 10px;*/
+	width: 80%;
+}
