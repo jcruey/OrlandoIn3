@@ -1,10 +1,12 @@
 $(document).ready(function () {
 
-var inputInfo= new Firebase("https://trainhome.firebaseio.com/");
+var inputInfo= new Firebase("https://console.firebase.google.com/project/project-6671229764144633849/overview");
 	
-	var name="";
-	var name2="";
-	var name3="";
+	var venueImageF="";
+	var venueNameF="";
+	var ratingF="";
+	var priceF="";
+	var addressF="";
 
 	$(".clickHere").on("click", function() {
 
