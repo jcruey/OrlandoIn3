@@ -4,16 +4,23 @@
 
 body {
 	background-image:url(../images/pg1background.jpg);
-	background-size:100%;	
-	background-image:cover;
+	background-size:100%;
 	background-repeat:no-repeat;
+	width:970px;
+	height:100%;
+	padding:0px;
+	padding-bottom:0px;
+	margin-top:0px;
+	margin-bottom: 0px;
+	background-image:
 }
 #logo {
 	
-	background-repeat:no-repeat;
+	
 	text-align: center;
 	margin-left:0px;
-	padding-left: %;
+	padding-top: %;
+	margin-top:10px;
 }
 #step1 {
 	background-image: url(../images/background1.jpg);
@@ -21,11 +28,15 @@ body {
 	background-repeat: no-repeat;
 	padding-right: 0px
 	margin-right:50px;
-	padding:100px;
+	padding:0px;
+	padding-top:90px;
 	text-align: center;
 	float:left;
-	width: 1350px;
-	margin-top:140px;
+	width: 970px;
+	height:100%;
+	margin-top:20px;
+	margin-bottom: 0px;
+	background-image: fixed;
 }
 #step2 {
 	background-image: url(../images/background2.jpg);
@@ -34,11 +45,12 @@ body {
 	padding-right: 0px
 	margin-right:0px;
 	padding:0px;
-	padding-bottom: 115px;
+	padding-bottom: 0px;
 text-align: center;
 	float:left;
-	width: 1350px;
+	width: 970px;
 	margin-top:0px;
+	height:100%;
 }
 
 #step3 {
@@ -51,7 +63,8 @@ text-align: center;
 	padding-left:0px;
 	text-align: center;
 	float:left;
-	width: 1350px;
+	width: 970px;
+	height:100%;
 	margin-top:0px;
 }
 
@@ -61,13 +74,16 @@ text-align: center;
 	background-color: red;
 }
 #funimage{
-	margin-top: 0px;
-	margin-bottom:200px;
+	margin-top: 50px;
+	margin-bottom:0px;
 	margin-left:50px;
 }
 #foodImage{
-	margin-top: 300px;
-	margin-left:50px;
+	margin-top: 0px;
+	margin-left:200px;
+	margin-right:0px;
+	padding-left:;
+	text-align: right;
 }
 #restaurants{
 	
@@ -110,13 +126,22 @@ text-align: center;
 	float:left;
 }
 #formRow {
-	margin-left: 35%;
-}
+	margin-left: 30%;
+	}
+
+#form-group {
+	margin-left: 30%;
+	}
 .form-control {
 	width:300px !important;
 }
+	.form-horizontal {
+	margin-bottom: 50px;
+}
 #clickButton {
 	margin-left: 18%;
+
+
 }
 #fsquareResults {
 	padding-top: 30px; 					
