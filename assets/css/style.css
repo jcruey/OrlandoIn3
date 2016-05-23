@@ -1,0 +1,131 @@
+#container{
+	width: 100%;
+}
+
+body {
+	background-image:url(../images/pg1background.jpg);
+	background-size:100%;	
+	background-image:cover;
+	background-repeat:no-repeat;
+}
+#logo {
+	
+	background-repeat:no-repeat;
+	text-align: center;
+	margin-left:0px;
+	padding-left: %;
+}
+#step1 {
+	background-image: url(../images/background1.jpg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	padding-right: 0px
+	margin-right:50px;
+	padding:100px;
+	text-align: center;
+	float:left;
+	width: 1350px;
+	margin-top:140px;
+}
+#step2 {
+	background-image: url(../images/background2.jpg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	padding-right: 0px
+	margin-right:0px;
+	padding:0px;
+	padding-bottom: 115px;
+text-align: center;
+	float:left;
+	width: 1350px;
+	margin-top:0px;
+}
+
+#step3 {
+	background-image: url(../images/background3.jpg);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	padding-right: 0px
+	padding:0px;
+	margin-right:0px;
+	padding-left:0px;
+	text-align: center;
+	float:left;
+	width: 1350px;
+	margin-top:0px;
+}
+
+#foodresult{
+	margin-top: 0px;
+	margin-left:50px;
+	background-color: red;
+}
+#funimage{
+	margin-top: 0px;
+	margin-bottom:200px;
+	margin-left:50px;
+}
+#foodImage{
+	margin-top: 300px;
+	margin-left:50px;
+}
+#restaurants{
+	
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	margin-left:0px;
+	background-image:;
+	background-size: 500px;
+	background-repeat:no-repeat;
+}
+#venueChoices {
+	margin-left: 50px;
+	margin-top:0px; 
+	margin-bottom: 0px;
+	margin-right: 0px;
+	text-align: center;
+	padding-bottom: 0px;
+	background-image:
+	background-size: 0px;
+	background-repeat:no-repeat;
+}
+
+
+#logoRow {
+	margin-top:0%;
+	margin-left:100px;
+	text-align: center;
+}
+
+#resultimage {
+	background-image: url(../images/dish_theatre.png);
+	}
+
+#funResult {
+	margin-top:0%;
+	margin-left:0px;
+	text-align: center;
+	float:left;
+	background-color: red;
+	float:left;
+}
+#formRow {
+	margin-left: 35%;
+}
+.form-control {
+	width:300px !important;
+}
+#clickButton {
+	margin-left: 18%;
+}
+#fsquareResults {
+	padding-top: 30px; 					
+	color: white;
+	border-bottom:	solid 1px white;
+}
+#fsquareResults img {
+	color: white;
+	border:	solid 4px #1e90ff;
+	/*padding: 10px;*/
+	width: 80%;
+}
