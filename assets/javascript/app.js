@@ -1,4 +1,9 @@
 $(document).ready(function () {
+
+    
+
+
+
     // Initial array of GIFs
     var app = {
      choice: "", 

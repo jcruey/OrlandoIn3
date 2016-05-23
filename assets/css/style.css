@@ -1,7 +1,9 @@
 body {
 	background-image:url(../images/2.jpg);
 	background-size:cover;	
+	background-attachment:fixed;
 }
+/*Login Page*/
 #logoRow {
 	margin-top:22%;
 	margin-left:45%;
@@ -15,6 +17,24 @@ body {
 #clickButton {
 	margin-left: 18%;
 }
+/*Step 1 Page*/
+#step1 {
+	margin-top:20%;
+	padding-top: 20px;
+	width:100%;
+	/*background-color: red;
+	height:650px;*/
+}
+#foodImage {
+	float:right;
+}
+.dropdown {
+	margin-bottom: 8%;
+}
+#restaurants {
+	/*visibility: hidden;*/
+	margin-left: 4%;
+}
 #fsquareResults {
 	padding-top: 30px; 					
 	color: white;
@@ -25,4 +45,26 @@ body {
 	border:	solid 4px #1e90ff;
 	/*padding: 10px;*/
 	width: 80%;
+}
+/*Step 2 Page*/
+#step2 {
+	margin-top:20%;
+}
+#funImage {
+	margin-left: 38%;
+	margin-bottom: 5%;
+}
+#places {
+	visibility: hidden;
+	margin-left: 4%;
+}
+/*Step 3 Page*/
+#step3 {
+	margin-top:20%;
+}
+#foodResult {
+	margin-left: 25%;
+}
+#funResult {
+	margin-left: 25%;
 }
