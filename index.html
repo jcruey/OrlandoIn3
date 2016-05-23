@@ -4,6 +4,7 @@
 	<title>Orlando In 3</title>
 	<!--CSS-->
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<!--bootstrap-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<!--Firebase CDN-->
 	<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
@@ -17,24 +18,86 @@
 		<div class="row" id="formRow"><br>
 			<form class="form-horizontal">
 			  <div class="form-group">
-			    <div class="col-sm-10">
+			    <div class="col-sm-10 col-md-10 col-lg-10">
 			      <input type="text" class="form-control" id="inputName" placeholder="Enter Your Name">
 			    </div>
 			  </div>
-			  <div class="form-group">
-			    <div class="col-sm-10">
+			</form>
+			  <!-- <div class="form-group">
+			    <div class="col-sm-10 col-md-10 col-lg-10">
 			      <input type="date" class="form-control" id="inputDate">
 			    </div>
-			  </div>
-			  <div class="form-group">
-    			<button type="submit" class="btn btn-default" id="clickButton">Continue</button>
-  			  </div>	
-			</form>
+			  </div> -->
+			<!--modal-->
+			<button type="submit" class="btn btn-default" id="clickButton" data-toggle="modal" data-target="#loginbuttonModal">Continue</button>
+			<div class="modal fade" id="loginbuttonModal" role="dialog">
+		    <div class="modal-dialog">
+		      <!-- Modal content-->
+		      <div class="modal-content">
+		        <div class="modal-header">
+		          <h4 class="modal-title">Error</h4>
+		        </div>
+		        <div class="modal-body" id="errorMessage">
+		          <p>Please enter a name to continue</p>
+		        </div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        </div>
+		      </div>
+		    </div>
+			</div>
 		</div>
 	</div>
 	<!--End Login page-->
+	<!--Step1 page-->
+	<div class="container" id="step1">
+		<div class="row">
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<div id="foodImage"><img src="http://placehold.it/200x200"></div>
+			</div>
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<div id="venueChoices">
+					<select class="form-control" id="foodChoices">
+					</select>
+					<select class="form-control" id="priceChoices">
+					</select>
+					<input class="btn btn-info" id="submitQuery" type="submit" value="Submit">
+				</div>
+			</div>
+		</div>		
+		 
+		<div class="row" id="restaurants">
+			<div class="row" id="fsquareResults">
+				<div class="col-sm-12 col-md-12 col-lg-12"></div>
+			</div>
+		</div>
+	</div>
+	<!--End Step 1 Page-->
+	<!--Step 2 Page-->
+	<div class="container" id="step2">
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+				<div id="funImage"><img src="http://placehold.it/200x200"></div>
+			</div>
+		</div>
+	</div>
+	<!--End Step 2 Page-->
+	<!--Step 3 Page-->
+	<div class="container" id="step3">
+		<div class="row">
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<div id="foodResult"><img src="http://placehold.it/200x200"></div>
+			</div>
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<div id="funResult"><img src="http://placehold.it/200x200"></div>
+			</div>
+		</div>
+	</div>
+	<!--End Step 3 Page-->
 </body>
 	<!--jquery/javascript-->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+	<script type="text/javascript" src="assets/javascript/bootstrap.js"></script>
 	<script type="text/javascript" src="assets/javascript/app.js"></script>
+
 </html>
