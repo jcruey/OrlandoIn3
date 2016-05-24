@@ -1,6 +1,5 @@
 body {
 	width:100%;
-	margin:0 0 100px;
 }
 #container{
 	width: 100%;
@@ -10,7 +9,7 @@ body {
 	background-size:cover;	
 	background-attachment:fixed;*/
 
-	background-image:url(../images/pg1background.jpg);
+	background-image:url(../images/2.jpg);
 	background-size:cover;
 	background-repeat:no-repeat;
 	width:100%;
@@ -47,9 +46,7 @@ body {
 	text-align: center;
 	width: 100%;
 	height:650px;
-	background-image: fixed;
 }
-
 #step3 {
 	background-image: url(../images/background3.jpg);
 	background-size: cover;
@@ -61,32 +58,17 @@ body {
 	width: 100%;
 	height:650px;
 }
-
-
 #funimage{
 	margin-top:50px;
 	margin-bottom:0px;
 	margin-left:40%;
-	background-image: url(../images/theatrefaces.png);
-	background-size: 500px, 600px; 
-	/*opacity:.6;*/
-	width:600px;
-	height:350px;
-	background-repeat:no-repeat;
-
 }
 #foodImage{
-	margin-top: 5%;
-	margin-left:30%;
+	margin-top: 0px;
+	margin-left:200px;
 	margin-right:0px;
-	padding-bottom:0px;
+	padding-left:;
 	text-align: right;
-	background-image: url(../images/dishorange.png); 
-	/*opacity:.6;*/
-	background-size:500px,450px;
-	background-size:cover;
-	width:600px;
-	height:350px;
 }
 #restaurants{
 	padding-bottom: 0px;
@@ -112,16 +94,13 @@ body {
 	margin-left:40px;
 	text-align: center;
 }
-
 #resultimage{
 	background-image:url(../images/dish_theatre.png);
 	background-repeat: no-repeat;	
 	width:100%;
 	height:400px;
-	margin-top: 10%;
-	margin-left: 20%;
-	}
-
+	margin-top: 100px;
+}
 #funResult {
 	margin-top:0%;
 	margin-left:0px;
@@ -130,12 +109,11 @@ body {
 #foodResult {
 	margin-top:0%;
 	margin-left:0px;
+	background-color: ;	
 }
-
 #formRow {
 	margin-left: 39%;
 }
-
 #form-group {
 	/*margin-left: 40%;*/
 	opacity: 0.9;
@@ -159,17 +137,15 @@ body {
 	background-color: #DA552C;
 	color:#F5EFDF;
 }
-
 #clickButton:hover {
 	opacity:0.8;
 }
 #fsquareResults {
 	padding-top: 20px; 					
 }
-
 #fsquareResults img {
 	color: white;
-	border:solid 10px #DA552C;
+	border:	solid 4px #1e90ff;
 	/*padding: 10px;*/
 	width: 80%;
 }
@@ -195,27 +171,17 @@ body {
 	color:#F5EFDF;
 	border:none !important;
 }
-
-#submitQuery:focus {
-	box-shadow: none !important;
-}
 #submitQuery:hover {
 	opacity:0.8;
-
 }
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
 	outline: none !important;
 }
-.btn .btn-info .Select {
-	background-color: #DA552C;
-	color:#F5EFDF;
+.btn {
+	background-color: #DA552C !important;
+	color:#F5EFDF !important;
 	border:none !important;
 }
-.btn .btn-info .Select{
-	background-color: red;
-}
-
-
 .btn:hover {
 	opacity:0.8;
 }
@@ -234,32 +200,7 @@ body {
 #submitEventQuery:hover {
 	opacity:0.8;
 }
-
-nav {
-	height: 70px;
-	background-color:red;
-	}
-
-h3 {
-	font-size: 15px;
-	font-family:;
-	text-align: center;
-	color: white;
-}
-footer {
-	background-image: url(../images/dish_theatre.png);
-	background-size: 50px;
-   position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 0px;
-    width: 100%;
-}
-/*body {*/
-    margin: 0 0 100px;
-}
-
-Login Page*/
+/*Login Page*/
 /*#logoRow {
 	margin-top:22%;
 	margin-left:45%;
