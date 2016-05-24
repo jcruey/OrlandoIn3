@@ -47,7 +47,6 @@ body {
 	width: 100%;
 	height:650px;
 }
-
 #step3 {
 	background-image: url(../images/background3.jpg);
 	background-size: cover;
@@ -59,13 +58,10 @@ body {
 	width: 100%;
 	height:650px;
 }
-
-
-
 #funimage{
 	margin-top:50px;
 	margin-bottom:0px;
-	margin-left:50px;
+	margin-left:40%;
 }
 #foodImage{
 	margin-top: 0px;
@@ -98,15 +94,13 @@ body {
 	margin-left:40px;
 	text-align: center;
 }
-
 #resultimage{
 	background-image:url(../images/dish_theatre.png);
 	background-repeat: no-repeat;	
 	width:100%;
 	height:400px;
 	margin-top: 100px;
-	}
-
+}
 #funResult {
 	margin-top:0%;
 	margin-left:0px;
@@ -115,13 +109,11 @@ body {
 #foodResult {
 	margin-top:0%;
 	margin-left:0px;
-	background-color: ;
-	
+	background-color: ;	
 }
 #formRow {
 	margin-left: 39%;
 }
-
 #form-group {
 	/*margin-left: 40%;*/
 	opacity: 0.9;
@@ -145,10 +137,12 @@ body {
 	background-color: #DA552C;
 	color:#F5EFDF;
 }
+#clickButton:hover {
+	opacity:0.8;
+}
 #fsquareResults {
 	padding-top: 20px; 					
 }
-
 #fsquareResults img {
 	color: white;
 	border:	solid 4px #1e90ff;
@@ -177,16 +171,34 @@ body {
 	color:#F5EFDF;
 	border:none !important;
 }
-#submitQuery:focus {
-	box-shadow: none !important;
+#submitQuery:hover {
+	opacity:0.8;
 }
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
 	outline: none !important;
 }
-.btn .btn-info .Select {
+.btn {
+	background-color: #DA552C !important;
+	color:#F5EFDF !important;
+	border:none !important;
+}
+.btn:hover {
+	opacity:0.8;
+}
+#eventChoices {
+	margin-top: 20%;
+	margin-bottom:10px;
+	margin-left: 8.5%;
+}
+#submitEventQuery {
+	margin-right: 3.7%;
 	background-color: #DA552C;
 	color:#F5EFDF;
 	border:none !important;
+	margin-left: 2%;
+}
+#submitEventQuery:hover {
+	opacity:0.8;
 }
 /*Login Page*/
 /*#logoRow {
