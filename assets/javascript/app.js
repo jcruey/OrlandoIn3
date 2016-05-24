@@ -4,6 +4,8 @@ $(document).ready(function () {
      choice: "",
      eventchoice: "", 
      price: "",
+     inputInfo: "",
+                
      eventprice: "",   
      foodType: ['Japanese', 'American', 'Burgers', 'Vegetarian', 'Seafood', 'Mexican', 'Italian', 'Sushi', 'Steakhouse', "Pizza", 'Cuban', 'Pasta', 'Chinese'],
      eventType: ['Theme Park', "Movie Theater", "Music", "Performing Arts", "Park", "Garden", "Ballet", "Aquarium"],
@@ -75,24 +77,6 @@ $(document).ready(function () {
             $('#priceChoices').append(b); // Added the dropdown choices to the HTML
         } 
 
-        // Loops through the array of categories
-        for (var i = 0; i < app.eventPrice.length; i++){
-
-            var c = $('<option>'); // This code creates the list items for the dropdown
-            if (app.eventPrice[i] == "$") {
-                c.attr('data-value', "1"); // Adds data attribute with price point
-            } else if (app.eventPrice[i] == "$$") {
-                c.attr('data-value', "2"); // Adds data attribute with price point
-            } else if (app.eventPrice[i] == "$$$") {
-                c.attr('data-value', "3"); // Adds data attribute with price point
-            }; // else if (app.eventPrice[i] == "$$$$") {
-            //     b.attr('data-value', "4"); // Adds data attribute with price point
-            // };
-            c.text(app.eventPrice[i]); // Provided the initial button text
-            c.addClass('eventPriceBtn'); // Adds a class for later use as selector to the menu choice
-            $('#eventPrices').append(c); // Added the dropdown choices to the HTML
-        } 
-
         $('#priceChoices').on('change', function() {
             app.price = $.trim($('#priceChoices option:selected').attr("data-value"));
         });
@@ -106,6 +90,9 @@ $(document).ready(function () {
    
     app.renderfoodType();
     app.renderpriceType();
+    app.inputInfo= new Firebase("https://project-6671229764144633849.firebaseio.com/");
+
+
   
     $('#submitQuery').on('click', function () {   
         var queryURL = "https://api.foursquare.com/v2/venues/explore?near=Orlando,Fl&radius=100000&price=" + app.price + "&openNow=1&venuePhotos=1&query=" + app.choice + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20160523";
@@ -145,12 +132,13 @@ $(document).ready(function () {
                         price: results[i].venue.price.message,
                         currency: results[i].venue.price.currency,
                         address: results[i].venue.location.formattedAddress,
-                        contact: results[i].venue.contact.phone,
+                        contact: results[i].venue.contact,
                         venueImage: results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix
                     };
 
                     // console.log(results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix);
-                    // console.log(results[i].venue.name);
+                    console.log(results[i].venue.name);
+                    console.log(results[i].venue.contact);
                     // console.log(results[i].venue.id);
                     // // console.log(results[i].venue.hours.status);
                     // console.log(results[i].venue.price.tier);
@@ -165,7 +153,7 @@ $(document).ready(function () {
                         selectBtn.attr('data-value', [i]);
                     venueDiv.append('<img src='+apidataReturn[i].venueImage+'>');
                     venueDiv.append('<h3>'+apidataReturn[i].venueName+'</h3>');
-                    venueDiv.append('<p>Rating: '+apidataReturn[i].rating+'</p>');
+                    venueDiv.append('<p>Contact: '+apidataReturn[i].contact+'</p>');
                     venueDiv.append('<p>Price: '+apidataReturn[i].price+'</p>');
                     venueDiv.append('<p>Address: '+apidataReturn[i].address[0]+'<br>'+apidataReturn[i].address[1]+'<br>'+apidataReturn[i].address[2]+'</p>');
                     venueDiv.append('<p>Contact: '+apidataReturn[i].contact+'</p><br>')
@@ -178,6 +166,17 @@ $(document).ready(function () {
                 var firebaseFoodSelect = apidataReturn[$(this).attr("data-value")]
                 $('#fsquareResults').empty();
                 console.log(firebaseFoodSelect);
+
+                // app.inputInfo.set({
+                //     restaurantInformation: {
+                //      firebaseFoodSelect
+                // },
+                // });
+
+
+                // app.inputInfo.push({
+                //      restaurantInformation
+                //     });
                     
 
             });
@@ -185,7 +184,7 @@ $(document).ready(function () {
     });
 
     $('#submitEventQuery').on('click', function () {   
-        var queryURL = "https://api.foursquare.com/v2/venues/explore?&near=Orlando,Fl&price=" + app.eventprice + "&venuePhotos=1&query=" + app.eventchoice + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20160501&m=foursquare";
+        var queryURL = "https://api.foursquare.com/v2/venues/explore?&near=Orlando,Fl&venuePhotos=1&query=" + app.eventchoice + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20160501&m=foursquare";
         $('#fsquareResults').empty();
         $.ajax({
                 url: queryURL,
@@ -225,6 +224,7 @@ $(document).ready(function () {
 
                     // console.log(results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix);
                     console.log(results[i].venue.name);
+                    console.log(results[i].venue.contact);
                     // console.log(results[i].venue.id);
                     // // console.log(results[i].venue.hours.status);
                     // console.log(results[i].venue.price.tier);
@@ -239,17 +239,30 @@ $(document).ready(function () {
                         selectBtn.attr('data-value', [i]);
                     venueDiv.append('<img src='+apidataReturn[i].venueImage+'>');
                     venueDiv.append('<h3>'+apidataReturn[i].venueName+'</h3>');
-                    venueDiv.append('<p>Rating: '+apidataReturn[i].rating+'</p>');
+                    venueDiv.append('<p>Contact: '+apidataReturn[i].contact+'</p>');
                     venueDiv.append('<p>Address: '+apidataReturn[i].address[0]+'<br>'+apidataReturn[i].address[1]+'<br>'+apidataReturn[i].address[2]+'</p>');
                     venueDiv.append(selectBtn);
                 $('#fsquareResults').prepend(venueDiv);
 
              }
 
+
              $('#fsquareResults').on('click', 'button', function () {
                 var firebaseEventSelect = apidataReturn[$(this).attr("data-value")]
+                
                 $('#fsquareResults').empty();
                 console.log(firebaseEventSelect);
+
+                // app.inputInfo.set({
+                //     eventInformation: {
+                //     firebaseEventSelect
+                // },
+                // });
+
+
+                // app.inputInfo.push({
+                //  eventInformation
+                //     });
                     
 
             }); 
