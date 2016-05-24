@@ -4,6 +4,7 @@ $(document).ready(function () {
      choice: "",
      eventchoice: "", 
      price: "",
+     inputInfo: new Firebase("https://project-6671229764144633849.firebaseio.com/"),
      eventprice: "",   
      foodType: ['Japanese', 'American', 'Burgers', 'Vegetarian', 'Seafood', 'Mexican', 'Italian', 'Sushi', 'Steakhouse', "Pizza", 'Cuban', 'Pasta', 'Chinese'],
      eventType: ['Theme Park', "Movie Theater", "Music", "Performing Arts", "Park", "Garden", "Ballet", "Aquarium"],
@@ -204,6 +205,11 @@ $(document).ready(function () {
                 $('#submitQuery').hide();
                 $('#modalFoodSelection').modal('show');
                 console.log(firebaseFoodSelect);
+
+
+                app.inputInfo.push({
+                    firebaseFoodSelect
+                });
                     
 
             });
@@ -280,6 +286,11 @@ $(document).ready(function () {
                 $('#submitEventQuery').hide();
                 $('#modalEventSelection').modal('show');
                 console.log(firebaseEventSelect);
+
+                 app.inputInfo.push({
+                    firebaseEventSelect
+                });
+                    
                     
 
             }); 
