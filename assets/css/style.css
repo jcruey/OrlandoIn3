@@ -87,6 +87,7 @@ body {
 	background-size:cover;
 	width:600px;
 	height:350px;
+
 }
 #restaurants{
 	padding-bottom: 0px;
@@ -120,7 +121,8 @@ body {
 	height:400px;
 	margin-top: 10%;
 	margin-left: 20%;
-	}
+	
+}
 
 #funResult {
 	margin-top:0%;
@@ -164,7 +166,10 @@ body {
 	opacity:0.8;
 }
 #fsquareResults {
-	padding-top: 20px; 					
+	padding-top: 20px; 	
+	z-index: 10;
+	top: 10;
+  	left: 0;				
 }
 
 #fsquareResults img {
@@ -177,6 +182,19 @@ body {
 	color:#8C3E18;
 }
 #fsquareResults p {
+	color:#8C3E18;
+	margin:0px !important;
+}
+#fsquareEventResults {
+	color: white;
+	border:solid 10px #DA552C;
+	/*padding: 10px;*/
+	width: 80%;
+}
+#fsquareEventResults h3 {
+	color:#8C3E18;
+}
+#fsquareEventResults p {
 	color:#8C3E18;
 	margin:0px !important;
 }

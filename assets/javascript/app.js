@@ -184,7 +184,7 @@ $(document).ready(function () {
 
     $('#submitEventQuery').on('click', function () {   
         var queryURL = "https://api.foursquare.com/v2/venues/explore?categoryId=4d4b7104d754a06370d81259&near=Orlando,Fl&radius=100000&price=" + app.eventprice + "&Photos=1&venuePhotos=1&query=" + app.eventchoice + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20130815";
-        $('#fsquareResults').empty();
+        $('#fsquareEventResults').empty();
         $.ajax({
                 url: queryURL,
                 method: 'GET'
@@ -217,8 +217,8 @@ $(document).ready(function () {
                     apidataReturn[i] = {
                         venueName: results[i].venue.name,
                         rating: results[i].venue.rating,
-                        price: results[i].venue.price.message,
-                        currency: results[i].venue.price.currency,
+                        //price: results[i].venue.price.message,
+                        //currency: results[i].venue.price.currency,
                         address: results[i].venue.location.formattedAddress,
                         venueImage: results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix
                     };
@@ -240,18 +240,18 @@ $(document).ready(function () {
                     venueDiv.append('<img src='+apidataReturn[i].venueImage+'>');
                     venueDiv.append('<h3>'+apidataReturn[i].venueName+'</h3>');
                     venueDiv.append('<p>Rating: '+apidataReturn[i].rating+'</p>');
-                    venueDiv.append('<p>Price: '+apidataReturn[i].price+'</p>');
+                    //venueDiv.append('<p>Price: '+apidataReturn[i].price+'</p>');
                     venueDiv.append('<p>Address: '+apidataReturn[i].address[0]+'<br>'+apidataReturn[i].address[1]+'<br>'+apidataReturn[i].address[2]+'</p><br>');
                     venueDiv.append(selectBtn);
-                $('#fsquareResults').prepend(venueDiv);
+                $('#fsquareEventResults').prepend(venueDiv);
 
              }
 
 
-             $('#fsquareResults').on('click', 'button', function () {
+             $('#fsquareEventResults').on('click', 'button', function () {
             
                 var firebaseEventSelect = apidataReturn[$(this).attr("data-value")]
-                $('#fsquareResults').empty();
+                $('#fsquareEventResults').empty();
                 console.log(firebaseEventSelect);
                     
 
