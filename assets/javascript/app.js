@@ -112,17 +112,17 @@ $(document).ready(function () {
         var name_regex = /^[a-zA-Z]+$/;
 
             if (nameInput.length == 0) {
-                alert("You must enter a name to continue");
+                $('#modalNameEmpty').modal('show');
                 $("#nameInput").focus();
                 return false;
                 }
             else if (!nameInput.match(name_regex) || nameInput.length == 0) {
-                alert("You must enter a name using alphabet characters a-z or A-Z")
+                $('#modalNameIllegal').modal('show');
                 $("#nameInput").focus();
                 return false;
                 } else {
                 console.log(nameInput);
-                alert("Form Submitted Successfuly!");
+                $('#modalSuccess').modal('show');
                 return true;
                 }
 
@@ -202,7 +202,7 @@ $(document).ready(function () {
                 $('#foodChoices').hide();
                 $('#priceChoices').hide();
                 $('#submitQuery').hide();
-                $('#myModal').modal('show');
+                $('#modalFoodSelection').modal('show');
                 console.log(firebaseFoodSelect);
                     
 
@@ -211,13 +211,8 @@ $(document).ready(function () {
     });
 
     $('#submitEventQuery').on('click', function () {   
-<<<<<<< HEAD
-        var queryURL = "https://api.foursquare.com/v2/venues/explore?categoryId=4d4b7104d754a06370d81259&near=Orlando,Fl&radius=100000&price=" + app.eventprice + "&Photos=1&venuePhotos=1&query=" + app.eventchoice + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20130815";
-        $('#fsquareEventResults').empty();
-=======
         var queryURL = "https://api.foursquare.com/v2/venues/explore?&near=Orlando,Fl&price=" + app.eventprice + "&venuePhotos=1&query=" + app.eventchoice + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20160501&m=foursquare";
-        $('#fsquareResults').empty();
->>>>>>> 2720babdcb00e31a7aa8c3ae7a3092c8643ada86
+        $('#fsquareEventResults').empty();
         $.ajax({
                 url: queryURL,
                 method: 'GET'
@@ -249,12 +244,6 @@ $(document).ready(function () {
 
                     apidataReturn[i] = {
                         venueName: results[i].venue.name,
-<<<<<<< HEAD
-                        rating: results[i].venue.rating,
-                        //price: results[i].venue.price.message,
-                        //currency: results[i].venue.price.currency,
-=======
->>>>>>> 2720babdcb00e31a7aa8c3ae7a3092c8643ada86
                         address: results[i].venue.location.formattedAddress,
                         contact: results[i].venue.contact,
                         venueImage: results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix
@@ -277,33 +266,19 @@ $(document).ready(function () {
                         selectBtn.attr('data-value', [i]);
                     venueDiv.append('<img src='+apidataReturn[i].venueImage+'>');
                     venueDiv.append('<h3>'+apidataReturn[i].venueName+'</h3>');
-<<<<<<< HEAD
-                    venueDiv.append('<p>Rating: '+apidataReturn[i].rating+'</p>');
-                    //venueDiv.append('<p>Price: '+apidataReturn[i].price+'</p>');
-                    venueDiv.append('<p>Address: '+apidataReturn[i].address[0]+'<br>'+apidataReturn[i].address[1]+'<br>'+apidataReturn[i].address[2]+'</p><br>');
-=======
                     venueDiv.append('<p>Contact: '+apidataReturn[i].contact+'</p>');
                     venueDiv.append('<p>Address: '+apidataReturn[i].address[0]+'<br>'+apidataReturn[i].address[1]+'<br>'+apidataReturn[i].address[2]+'</p>');
->>>>>>> 2720babdcb00e31a7aa8c3ae7a3092c8643ada86
                     venueDiv.append(selectBtn);
                 $('#fsquareEventResults').prepend(venueDiv);
 
              }
 
-<<<<<<< HEAD
-
              $('#fsquareEventResults').on('click', 'button', function () {
-            
                 var firebaseEventSelect = apidataReturn[$(this).attr("data-value")]
                 $('#fsquareEventResults').empty();
-=======
-             $('#fsquareResults').on('click', 'button', function () {
-                var firebaseEventSelect = apidataReturn[$(this).attr("data-value")]
-                $('#fsquareResults').empty();
                 $('#eventChoices').hide();
                 $('#submitEventQuery').hide();
-                $('#myModal').modal('show');
->>>>>>> 2720babdcb00e31a7aa8c3ae7a3092c8643ada86
+                $('#modalEventSelection').modal('show');
                 console.log(firebaseEventSelect);
                     
 
