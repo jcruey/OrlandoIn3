@@ -9,7 +9,7 @@ body {
 	background-size:cover;	
 	background-attachment:fixed;*/
 
-	background-image:url(../images/2.jpg);
+	background-image:url(../images/pg1background.jpg);
 	background-size:cover;
 	background-repeat:no-repeat;
 	width:100%;
@@ -46,6 +46,7 @@ body {
 	text-align: center;
 	width: 100%;
 	height:650px;
+	background-image: fixed;
 }
 
 #step3 {
@@ -61,11 +62,11 @@ body {
 }
 
 
-
 #funimage{
 	margin-top:50px;
 	margin-bottom:0px;
-	margin-left:50px;
+	margin-left:40%;
+
 }
 #foodImage{
 	margin-top: 0px;
@@ -105,6 +106,7 @@ body {
 	width:100%;
 	height:400px;
 	margin-top: 100px;
+	margin-left: 20%;
 	}
 
 #funResult {
@@ -115,9 +117,8 @@ body {
 #foodResult {
 	margin-top:0%;
 	margin-left:0px;
-	background-color: ;
-	
 }
+
 #formRow {
 	margin-left: 39%;
 }
@@ -144,6 +145,10 @@ body {
 	border:none !important;
 	background-color: #DA552C;
 	color:#F5EFDF;
+}
+
+#clickButton:hover {
+	opacity:0.8;
 }
 #fsquareResults {
 	padding-top: 20px; 					
@@ -177,8 +182,13 @@ body {
 	color:#F5EFDF;
 	border:none !important;
 }
+
 #submitQuery:focus {
 	box-shadow: none !important;
+}
+#submitQuery:hover {
+	opacity:0.8;
+
 }
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
 	outline: none !important;
@@ -187,6 +197,25 @@ body {
 	background-color: #DA552C;
 	color:#F5EFDF;
 	border:none !important;
+
+}
+.btn:hover {
+	opacity:0.8;
+}
+#eventChoices {
+	margin-top: 20%;
+	margin-bottom:10px;
+	margin-left: 8.5%;
+}
+#submitEventQuery {
+	margin-right: 3.7%;
+	background-color: #DA552C;
+	color:#F5EFDF;
+	border:none !important;
+	margin-left: 2%;
+}
+#submitEventQuery:hover {
+	opacity:0.8;
 }
 /*Login Page*/
 /*#logoRow {
