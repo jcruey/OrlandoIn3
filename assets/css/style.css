@@ -237,90 +237,31 @@ body {
 
 nav {
 	height: 70px;
-	background-color:red;
 	}
 
 h3 {
-	font-size: 15px;
-	font-family:;
-	text-align: center;
-	color: white;
+	font-family: 'Alfa Slab One', cursive;
+	padding-left:20px;
+	color: #DA552C;
 }
-footer {
-	background-image: url(../images/dish_theatre.png);
-	background-size: 50px;
-   position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 0px;
-    width: 100%;
-}
-/*body {*/
-    margin: 0 0 100px;
-}
+#Footercolumn{
+	text-align: left;
+	float:left;
+	}
 
-Login Page*/
-/*#logoRow {
-	margin-top:22%;
-	margin-left:45%;
-}
-#formRow {
-	margin-left: 35%;
-}
-.form-control {
-	width:300px !important;
-}
-#clickButton {
-	margin-left: 18%;
-}*/
-/*Step 1 Page*/
-/*/*#step1 {
-	margin-top:20%;
-	padding-top: 20px;
-	width:100%;
-	background-color: red;
-	height:650px;*/
-/*}*/
-/*#foodImage {
+#Footercolumn2{
+	text-align:right;
+	float:right;
+	}
+footer{
+	font-family: 'Alfa Slab One', cursive;
+	font-size:23px;
+	color: #DA552C;
+
+	}
+
+#social{
+	align:right;
 	float:right;
 }
-.dropdown {
-	margin-bottom: 8%;
-}
-#restaurants {
-	
-	margin-left: 4%;
-}
-#fsquareResults {
-	padding-top: 30px; 					
-	color: white;
-	border-bottom:	solid 1px white;
-}
-#fsquareResults img {
-	color: white;
-	border:	solid 4px #1e90ff;
-	width: 300px;
-	height:200px;
-}*/
-/*Step 2 Page*/
-/*#step2 {
-	margin-top:20%;
-}
-#funImage {
-	margin-left: 38%;
-	margin-bottom: 5%;
-}
-#places {
-	visibility: hidden;
-	margin-left: 4%;
-}*/
-/*Step 3 Page*/
-/*#step3 {
-	margin-top:20%;
-}
-#foodResult {
-	margin-left: 25%;
-}
-#funResult {
-	margin-left: 25%;
-}*/
+
