@@ -12,129 +12,169 @@
 	<link href='https://fonts.googleapis.com/css?family=Alfa+Slab+One' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
 	<!--login page-->
 	<div class="container" id="loginPage">
 		<div class="row" id="logoRow">
-			<div id="logo"><img src="assets/images/oi3logo.png" alt="logo" height="" width="350"></div>
-			<!-- <div id="logo"><h1>LOGO</h1></div> --><!--probably change to background to logo-->
+			<div id="logo">
+				<img src="assets/images/oi3logo.png" alt="logo" height="" width="350">
+			</div>
 		</div>
-		
 		<div class="row" id="formRow"><br>
 			<form class="form-horizontal">
-			  <div class="form-group">
-			    <div class="col-sm-10 col-md-10 col-lg-10">
-			      <input type="text" class="form-control" id="inputName" placeholder="Enter Your Name">
+			    <div class="form-group">
+			    	<div class="col-sm-10 col-md-10 col-lg-10">
+			      		<input type="text" class="form-control" id="inputName" placeholder="Enter Your Name">
+			    	</div>
 			    </div>
-			  </div>
+			    <button type="submit" class="btn btn-default" id="clickButton" data-toggle="modal" data-target="">Continue</button>
 			</form>
-			  <!-- <div class="form-group">
-			    <div class="col-sm-10 col-md-10 col-lg-10">
-			      <input type="date" class="form-control" id="inputDate">
-			    </div>
-			  </div> -->
-			<!--modal-->
-			<button type="submit" class="btn btn-default" id="clickButton" data-toggle="modal" data-target="#loginbuttonModal">Continue</button>
-			 <div class="modal fade" id="loginbuttonModal" role="dialog">
-		    <div class="modal-dialog">
-		      <!-- Modal content-->
-		      <div class="modal-content">
-		        <div class="modal-header">
-		          <h4 class="modal-title">Error</h4>
-		        </div>
-		        <div class="modal-body" id="errorMessage">
-		          <p>Please enter a name to continue</p>
-		        </div>
-		        <div class="modal-footer">
-		          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        </div>
-		      </div>
-		    </div>
-			</div> 
 		</div>
 	</div>
+
+	<!--Login button modals-->
+	<!--no name modal content-->
+	<div class="modal fade" id="modalNameEmpty" role="dialog">
+		<div class="modal-dialog">
+		    <div class="modal-content">
+		        <div class="modal-header">
+		        	<h4 class="modal-title">Error!</h4>
+		        </div>
+		        <div class="modal-body" id="errorMessage">
+		        	<p>Please enter a name to continue.</p>
+		        </div>
+		        <div class="modal-footer">
+		        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        </div>
+		    </div>
+		</div>
+	</div> 
+	<!--illegal character modal content-->
+	<div class="modal fade" id="modalNameIllegal" role="dialog">
+		<div class="modal-dialog">
+		    <div class="modal-content">
+		        <div class="modal-header">
+		        	<h4 class="modal-title">Error!</h4>
+		        </div>
+		        <div class="modal-body" id="errorMessage">
+		        	<p>Please only enter letters a-z or A-Z.</p>
+		        </div>
+		        <div class="modal-footer">
+		        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        </div>
+		    </div>
+		</div>
+	</div> 
+	<!--success modal content-->
+	<div class="modal fade" id="modalSuccess" role="dialog">
+		<div class="modal-dialog">
+		    <div class="modal-content">
+		        <div class="modal-header">
+		        	<h4 class="modal-title">Success!</h4>
+		        </div>
+		        <div class="modal-body" id="errorMessage">
+		        	<p>You have successfully entered a name!</p>
+		        </div>
+		        <div class="modal-footer">
+		        	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        </div>
+		    </div>
+		</div>
+	</div> 
 	<!--End Login page-->
+
 	<!--Step1 page-->
 	<div class="container" id="step1">
 		<div id="foodImage">
-		<div class="row">
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				
-				<!-- <div id="foodImage"><img src="http://placehold.it/200x200"></div> -->
-			</div>
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div id="venueChoices">
-					<select class="form-control" id="foodChoices">
-					</select>
-					<select class="form-control" id="priceChoices">
-					</select>
-					<input class="btn btn-info" id="submitQuery" type="submit" value="Submit">
+			<div class="row">
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					
 				</div>
-			</div>
-		</div>	
-		</div>	
-		 <div class="modal fade" id="myModal" role="dialog">
-				    <div class="modal-dialog">
-				      <!-- Modal content-->
-				      <div class="modal-content">
-				        <div class="modal-header">
-				          <h4 class="modal-title">Error</h4>
-				        </div>
-				        <div class="modal-body" id="errorMessage">
-				          <p>Please enter a name to continue</p>
-				        </div>
-				        <div class="modal-footer">
-				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				        </div>
-				      </div>
-				    </div>
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<div id="venueChoices">
+						<select class="form-control" id="foodChoices"></select>
+						<select class="form-control" id="priceChoices"></select>
+						<input class="btn btn-info" id="submitQuery" type="submit" value="Submit">
 					</div>
+				</div>
+			</div>	
+		</div>	
+		<!--shows food results-->
 		<div class="row" id="restaurants">
 			<div class="row" id="fsquareResults">
 				<div class="col-sm-12 col-md-12 col-lg-12">
 				</div>	
 			</div>
 		</div>
-		
+	</div>
+
+	<!--Food Modal Content-->
+	<div class="modal fade" id="modalFoodSelection" role="dialog">
+	    <div class="modal-dialog">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <h4 class="modal-title">Restaurant</h4>
+	            </div>
+		        <div class="modal-body" id="errorMessage">
+		            <p>You have selected a restaurant!</p>
+		        </div>
+	         	<div class="modal-footer">
+	           		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	         	</div>
+	        </div>
+	    </div>
 	</div>
 	<!--End Step 1 Page-->
+
 	<!--Step 2 Page-->
 	<div class="container" id="step2">
 		<div id="funImage">
-		<div class="row">
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<select class="form-control" id="eventChoices">
-				</select>
-				<!-- <select class="form-control" id="eventPrices">
-				</select> -->
-				<input class="btn btn-info" id="submitEventQuery" type="submit" value="Submit">
-				<!-- <div id="funImage"><img src="http://placehold.it/200x200"></div> -->
+			<div class="row">
+				<div class="col-sm-6 col-md-6 col-lg-6">
+					<select class="form-control" id="eventChoices"></select>
+					<input class="btn btn-info" id="submitEventQuery" type="submit" value="Submit">
+				</div>
 			</div>
 		</div>
-		</div>
+		<!--shows event results-->
 		<div class="row" id="fsquareEventResults">
 			<div class="col-sm-12 col-md-12 col-lg-12">
+
 			</div>
 		</div>
-	
+	</div>
+
+	<!--Event Modal Content-->
+	<div class="modal fade" id="modalEventSelection" role="dialog">
+	    <div class="modal-dialog">
+			<div class="modal-content">
+			    <div class="modal-header">
+			        <h4 class="modal-title">Event</h4>
+			    </div>
+		        <div class="modal-body" id="errorMessage">
+		            <p>You have selected an event!</p>
+		        </div>
+		        <div class="modal-footer">
+		            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        </div>
+			</div>
+		</div>
 	</div>
 	<!--End Step 2 Page-->
+
 	<!--Step 3 Page-->
 	<div class="container" id="step3">
 		<div id="resultimage">
-		<div class="row">
 			<div class="row">
-			<div id="fsquareResults" class="col-sm-12 col-md-12 col-lg-12">
+				<div class="col-sm-12 col-md-12 col-lg-12">
+
+				</div>
 			</div>
-			<!-- <div class="col-sm-6 col-md-6 col-lg-6">
-				<div id="foodResult"><img src="http://placehold.it/200x200"></div>
-			</div>
-			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div id="funResult"><img src="http://placehold.it/200x200"></div>
-			</div> -->
-		</div>
 		</div>
 	</div>
 	<!--End Step 3 Page-->
+
+	<!--footer-->
 	<footer>
 		<div id="footer">
 			<div class="row">
@@ -154,6 +194,7 @@
 			</div>
 		</div> 
 	</footer>
+
 </body>
 
 	<!--jquery/javascript-->
