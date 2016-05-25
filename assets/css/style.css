@@ -235,8 +235,10 @@ nav {
     margin-left: 2%;
 }
 #Footercolumn h3 {
-	font-family: 'Alfa Slab One', cursive;
-	font-size: 21px;
+	/*font-family: 'Alfa Slab One', cursive;*/
+	font-family: 'Exo', sans-serif;
+	font-weight: 600; 
+	font-size: 22px;
 	color: #DA552C;
 }
 #Footercolumn2 {
