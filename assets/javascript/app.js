@@ -124,6 +124,9 @@ $(document).ready(function () {
                 } else {
                 console.log(nameInput);
                 $('#modalSuccess').modal('show');
+                $('html,body').animate({
+                scrollTop: $("#step2").offset().top},
+                'slow');
                 return true;
                 }
 
@@ -206,6 +209,9 @@ $(document).ready(function () {
                 $('#modalFoodSelection').modal('show');
                 console.log(firebaseFoodSelect);
 
+                $('html,body').animate({
+                scrollTop: $("#step2").offset().top},
+                'slow');
 
                 app.inputInfo.push({
                     firebaseFoodSelect
@@ -286,6 +292,10 @@ $(document).ready(function () {
                 $('#submitEventQuery').hide();
                 $('#modalEventSelection').modal('show');
                 console.log(firebaseEventSelect);
+
+                $('html,body').animate({
+                scrollTop: $("#step3").offset().top},
+                'slow');
 
                  app.inputInfo.push({
                     firebaseEventSelect
