@@ -64,11 +64,9 @@ body {
 
 #funimage{
 	margin-top:50px;
-	margin-bottom:0px;
 	margin-left:40%;
 	background-image: url(../images/theatrefaces.png);
 	background-size: 500px, 600px; 
-	/*opacity:.6;*/
 	width:600px;
 	height:350px;
 	background-repeat:no-repeat;
@@ -81,7 +79,6 @@ body {
 	padding-bottom:0px;
 	text-align: right;
 	background-image: url(../images/dishorange.png); 
-	/*opacity:.6;*/
 	background-size:500px,450px;
 	background-size:cover;
 	width:600px;
