@@ -114,24 +114,27 @@ $(document).ready(function () {
 
             if (nameInput.length == 0) {
                 $('#modalNameEmpty').modal('show');
-                $("#nameInput").focus();
                 return false;
                 }
-            else if (!nameInput.match(name_regex) || nameInput.length == 0) {
+            else if (!nameInput.match(name_regex) || nameInput.length == 0) {   
                 $('#modalNameIllegal').modal('show');
-                $("#nameInput").focus();
+                $('#modalNameIllegal').on('hidden.bs.modal', function (e) {
+                    $('#inputName').val('');
+                    });
                 return false;
                 } else {
                 console.log(nameInput);
+                app.inputInfo.push(nameInput);
                 $('#modalSuccess').modal('show');
-                $('html,body').animate({
-                scrollTop: $("#step2").offset().top},
+                 $('html,body').animate({
+                scrollTop: $("#step1").offset().top},
                 'slow');
-                return true;
+                return false;
                 }
+                
 
     });
-  
+          
     $('#submitQuery').on('click', function () {   
         var queryURL = "https://api.foursquare.com/v2/venues/explore?near=Orlando,Fl&radius=100000&price=" + app.price + "&openNow=1&venuePhotos=1&query=" + app.choice + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20160523";
         $('#fsquareResults').empty();
@@ -257,7 +260,7 @@ $(document).ready(function () {
                     apidataReturn[i] = {
                         venueName: results[i].venue.name,
                         address: results[i].venue.location.formattedAddress,
-                        contact: results[i].venue.contact,
+                        contact: results[i].venue.contact || null,
                         venueImage: results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix
                     };
 
