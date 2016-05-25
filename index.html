@@ -8,13 +8,17 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<!--Firebase CDN-->
 	<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+	<!-- google fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Alfa+Slab+One' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<!--login page-->
 	<div class="container" id="loginPage">
 		<div class="row" id="logoRow">
-			<div id="logo"><h1>LOGO</h1></div><!--probably change to background to logo-->
+			<div id="logo"><img src="assets/images/oi3logo.png" alt="logo" height="" width="350"></div>
+			<!-- <div id="logo"><h1>LOGO</h1></div> --><!--probably change to background to logo-->
 		</div>
+		
 		<div class="row" id="formRow"><br>
 			<form class="form-horizontal">
 			  <div class="form-group">
@@ -30,7 +34,7 @@
 			  </div> -->
 			<!--modal-->
 			<button type="submit" class="btn btn-default" id="clickButton" data-toggle="modal" data-target="#loginbuttonModal">Continue</button>
-			<div class="modal fade" id="loginbuttonModal" role="dialog">
+			 <div class="modal fade" id="loginbuttonModal" role="dialog">
 		    <div class="modal-dialog">
 		      <!-- Modal content-->
 		      <div class="modal-content">
@@ -45,15 +49,17 @@
 		        </div>
 		      </div>
 		    </div>
-			</div>
+			</div> 
 		</div>
 	</div>
 	<!--End Login page-->
 	<!--Step1 page-->
 	<div class="container" id="step1">
+		<div id="foodImage">
 		<div class="row">
 			<div class="col-sm-6 col-md-6 col-lg-6">
-				<div id="foodImage"><img src="http://placehold.it/200x200"></div>
+				
+				<!-- <div id="foodImage"><img src="http://placehold.it/200x200"></div> -->
 			</div>
 			<div class="col-sm-6 col-md-6 col-lg-6">
 				<div id="venueChoices">
@@ -64,40 +70,99 @@
 					<input class="btn btn-info" id="submitQuery" type="submit" value="Submit">
 				</div>
 			</div>
-		</div>		
-		 
+		</div>	
+		</div>	
+		 <div class="modal fade" id="myModal" role="dialog">
+				    <div class="modal-dialog">
+				      <!-- Modal content-->
+				      <div class="modal-content">
+				        <div class="modal-header">
+				          <h4 class="modal-title">Error</h4>
+				        </div>
+				        <div class="modal-body" id="errorMessage">
+				          <p>Please enter a name to continue</p>
+				        </div>
+				        <div class="modal-footer">
+				          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				        </div>
+				      </div>
+				    </div>
+					</div>
 		<div class="row" id="restaurants">
 			<div class="row" id="fsquareResults">
-				<div class="col-sm-12 col-md-12 col-lg-12"></div>
+				<div class="col-sm-12 col-md-12 col-lg-12">
+				</div>	
 			</div>
 		</div>
+		
 	</div>
 	<!--End Step 1 Page-->
 	<!--Step 2 Page-->
 	<div class="container" id="step2">
+		<div id="funImage">
 		<div class="row">
-			<div class="col-sm-12 col-md-12 col-lg-12">
-				<div id="funImage"><img src="http://placehold.it/200x200"></div>
+			<div class="col-sm-6 col-md-6 col-lg-6">
+				<select class="form-control" id="eventChoices">
+				</select>
+				<!-- <select class="form-control" id="eventPrices">
+				</select> -->
+				<input class="btn btn-info" id="submitEventQuery" type="submit" value="Submit">
+				<!-- <div id="funImage"><img src="http://placehold.it/200x200"></div> -->
 			</div>
 		</div>
+		</div>
+		<div class="row" id="fsquareEventResults">
+			<div class="col-sm-12 col-md-12 col-lg-12">
+			</div>
+		</div>
+	
 	</div>
 	<!--End Step 2 Page-->
 	<!--Step 3 Page-->
 	<div class="container" id="step3">
+		<div id="resultimage">
 		<div class="row">
-			<div class="col-sm-6 col-md-6 col-lg-6">
+			<div class="row">
+			<div id="fsquareResults" class="col-sm-12 col-md-12 col-lg-12">
+			</div>
+			<!-- <div class="col-sm-6 col-md-6 col-lg-6">
 				<div id="foodResult"><img src="http://placehold.it/200x200"></div>
 			</div>
 			<div class="col-sm-6 col-md-6 col-lg-6">
 				<div id="funResult"><img src="http://placehold.it/200x200"></div>
-			</div>
+			</div> -->
+		</div>
 		</div>
 	</div>
 	<!--End Step 3 Page-->
+<footer>
+<div id="footer">
+<div class="row">
+<div id="Footercolumn" class="col-sm-7 col-md-7 col-lg-7">
+			
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+	<div id="oneliner"><h3>1. Choice of Food, 2. Choice of Entertainment 3. Your ready to go!</h3> </div>
+	</div>
+<div id="Footercolumn2" class="col-sm-5 col-md-5 col-lg-5">
+<div id="social">
+<img src="assets/images/dishorange.png" alt="logo" height="" width="50">
+	<img src="assets/images/twitterlogo.jpg" alt="logo" height="" width="50">
+	<img src="assets/images/oi3logo.png" alt="logo" height="" width="50">
+	<img src="assets/images/instagramlogo.png" alt="logo" height="" width="50">
+
+	<img src="assets/images/theatrefaces.png" alt="logo" height="" width="50">
+	</div></div>
+</nav>
+</div>
+</div>
+</div>
+</footer>
 </body>
+
 	<!--jquery/javascript-->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
 	<script type="text/javascript" src="assets/javascript/bootstrap.js"></script>
 	<script type="text/javascript" src="assets/javascript/app.js"></script>
+
 
 </html>
