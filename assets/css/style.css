@@ -1,6 +1,5 @@
 body {
 	width:100%;
-	margin:0 0 100px;
 }
 #container{
 	width: 100%;
@@ -208,12 +207,11 @@ body {
 	margin-bottom: 10px;
 }
 #submitQuery {
-	margin-right: 3.7%;
+	margin-left: 98%;
 	background-color: #DA552C;
 	color:#F5EFDF;
 	border:none !important;
 }
-
 #submitQuery:focus {
 	box-shadow: none !important;
 }
@@ -240,14 +238,13 @@ body {
 #eventChoices {
 	margin-top: 20%;
 	margin-bottom:10px;
-	margin-left: 8.5%;
+	margin-left: 85%;
 }
 #submitEventQuery {
-	margin-right: 3.7%;
 	background-color: #DA552C;
 	color:#F5EFDF;
 	border:none !important;
-	margin-left: 2%;
+	margin-left: 166%;
 }
 #submitEventQuery:hover {
 	opacity:0.8;
@@ -256,30 +253,28 @@ body {
 nav {
 	height: 70px;
 	}
-
-h3 {
+#Footercolumn {
+    float:left;
+    text-align: left;
+    margin-left: 2%;
+}
+#Footercolumn h3 {
 	font-family: 'Alfa Slab One', cursive;
-	padding-left:20px;
+	font-size: 21px;
 	color: #DA552C;
 }
-#Footercolumn{
-	text-align: left;
-	float:left;
-	}
-
-#Footercolumn2{
-	text-align:right;
+#Footercolumn2 {
+	text-align:left;
 	float:right;
-	}
-footer{
-	font-family: 'Alfa Slab One', cursive;
-	font-size:23px;
-	color: #DA552C;
-
-	}
-
-#social{
+}
+.navbar-default {
+	background-color:#F5EEDE !important;
+}
+#social {
 	align:right;
-	float:right;
+	float:left;
+	margin-top: 3%;
+	margin-left: 20%;
+
 }
 
