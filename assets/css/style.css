@@ -1,38 +1,86 @@
+
+/*This Css is organized in alpheabetical order*/
 body {
 	width:100%;
 }
+/*SUBMIT button in step 1, 2*/
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+	outline: none !important;
+}
+/*Not seeing where this code connects*/
+.btn .btn-info .Select {
+	background-color: #DA552C;
+	color:#F5EFDF;
+	border:none !important;
+}
+/*SUBMIT button in step 1, 2*/
+.btn-info {
+	border:none !important;
+	background-color: #DA552C !important;
+	color:#F5EFDF !important;
+	margin-top:-2%;
+}
+.btn:hover {
+	opacity:0.8;
+}
+/*container DIV for login page, Step 1,2 and 3 pages*/
 #container{
 	width: 100%;
 }
 
-#loginPage {
-	background-image:url(../images/pg1background.jpg);
-	background-size:cover;
-	background-repeat:no-repeat;
-	width:100%;
-	height:650px;
-	margin-top:0px;
-	margin-bottom: 0px;
-	background-image:
-}
-#logoRow {
-	margin-top:0%;
-	margin-left:40px;
-	text-align: center;
-}
-#logo {
-	margin-left:0px;
-	padding-top: 5%;
-	margin-top:10px;
-}
+/*styles for the CONTINUE button on login page */
 #clickButton {
 	margin-left: 14%;
 	border:none !important;
 	background-color: #DA552C;
 	color:#F5EFDF;
 }
+
 #clickButton:hover {
 	opacity:0.8;
+}
+
+/*div for the DROP DOWN MENU for event 
+choices on Step 2 page */
+#eventChoices {
+	margin-top: 20%;
+	margin-bottom:10px;
+	margin-left: 107%;
+}
+/*div for the PLATE & CUTLERY image on Step 1 page */
+#foodImage{
+	margin-top: 5%;
+	margin-left:30%;
+	margin-right:0px;
+	padding-bottom:0px;
+	text-align: right;
+	background-image: url(../images/dishorange.png); 
+	background-size:500px,450px;
+	background-size:cover;
+	width:600px;
+	height:350px;
+	position:relative;
+}
+/*div for the PLATE & CUTLERY image on Step 1 page */
+#foodChoices {
+	margin-bottom: 10px;
+}
+#Footercolumn {
+    float:left;
+    text-align: left;
+    margin-left: 2%;
+}
+/*FOOTER with text, Font is a Google Font*/
+#Footercolumn h3 {
+	font-family: 'Exo', sans-serif;
+	font-weight: 600; 
+	font-size: 22px;
+	color: #DA552C;
+}
+/*FOOTER with text, Font is a Google Font*/
+#Footercolumn2 {
+	text-align:left;
+	float:right;
 }
 #formRow {
 	margin-left: 39%;
@@ -54,83 +102,6 @@ body {
 .form-horizontal {
 	margin-bottom: 50px;
 }
-
-#step1 {
-	background-image: url(../images/background1.jpg);
-	background-size: cover;
-	text-align: center;
-	width: 100%;
-	height:700px;
-	margin-bottom: 0px;
-	background-image: fixed;
-}
-#foodImage{
-	margin-top: 5%;
-	margin-left:30%;
-	margin-right:0px;
-	padding-bottom:0px;
-	text-align: right;
-	background-image: url(../images/dishorange.png); 
-	background-size:500px,450px;
-	background-size:cover;
-	width:600px;
-	height:350px;
-	position:relative;
-}
-#venueChoices {
-	margin-left: 50px;
-	margin-top:0px; 
-	margin-bottom: 0px;
-	margin-right: 0px;
-	text-align: center;
-	padding-bottom: 0px;
-	background-image:
-	background-size: 0px;
-	background-repeat:no-repeat;
-}
-#foodChoices {
-	margin-bottom: 10px;
-}
-#priceChoices {
-	margin-bottom: 10px;
-}
-#submitQuery {
-	margin-left: 98%;
-	background-color: #DA552C;
-	color:#F5EFDF;
-	border:none !important;
-}
-#submitQuery:focus {
-	box-shadow: none !important;
-}
-#submitQuery:hover {
-	opacity:0.8;
-}
-.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
-	outline: none !important;
-}
-.btn .btn-info .Select {
-	background-color: #DA552C;
-	color:#F5EFDF;
-	border:none !important;
-}
-.btn-info {
-	border:none !important;
-	background-color: #DA552C !important;
-	color:#F5EFDF !important;
-	margin-top:-2%;
-}
-.btn:hover {
-	opacity:0.8;
-}
-#restaurants{
-	padding-bottom: 0px;
-	margin-bottom: 0px;
-	margin-left:0px;
-	background-image:;
-	background-size: 0px;
-	background-repeat:no-repeat;
-}
 #fsquareResults {
 	position:absolute;
 	top: 900px;				
@@ -148,42 +119,6 @@ body {
 #fsquareResults p {
 	color:#8C3E18;
 	margin:0px !important;
-}
-
-#step2 {
-	background-image: url(../images/background2.jpg);
-	background-size: cover;
-	text-align: center;
-	width: 100%;
-	height:650px;
-	background-image: fixed;
-}
-#funimage{
-	margin-top:50px;
-	margin-left:35%;
-	background-image: url(../images/theatrefaces.png);
-	background-size: 500px, 600px; 
-	width:600px;
-	height:350px;
-	background-repeat:no-repeat;
-	position:relative;
-}
-#venueChoices {
-	margin-top: 15%;
-}
-#eventChoices {
-	margin-top: 20%;
-	margin-bottom:10px;
-	margin-left: 107%;
-}
-#submitEventQuery {
-	background-color: #DA552C;
-	color:#F5EFDF;
-	border:none !important;
-	margin-left: 188%;
-}
-#submitEventQuery:hover {
-	opacity:0.8;
 }
 #fsquareEventResults {
 	position:absolute;
@@ -206,6 +141,90 @@ body {
 	margin-top: 3%;
 }
 
+#funimage{
+	margin-top:50px;
+	margin-left:35%;
+	background-image: url(../images/theatrefaces.png);
+	background-size: 500px, 600px; 
+	width:600px;
+	height:350px;
+	background-repeat:no-repeat;
+	position:relative;
+}
+
+#loginPage {
+	background-image:url(../images/pg1background.jpg);
+	background-size:cover;
+	background-repeat:no-repeat;
+	width:100%;
+	height:650px;
+	margin-top:0px;
+	margin-bottom: 0px;
+	background-image:
+}
+#logoRow {
+	margin-top:0%;
+	margin-left:40px;
+	text-align: center;
+}
+#logo {
+	margin-left:0px;
+	padding-top: 5%;
+	margin-top:10px;
+}
+
+nav {
+	height: 55px;
+}
+
+.navbar-default {
+	background-color:#F5EEDE !important;
+}
+
+#priceChoices {
+	margin-bottom: 10px;
+}
+
+#restaurants{
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	margin-left:0px;
+	background-image:;
+	background-size: 0px;
+	background-repeat:no-repeat;
+}
+
+#resultimage{
+	background-image:url(../images/dish_theatre.png);
+	background-repeat: no-repeat;	
+	width:100%;
+	height:400px;
+	margin-top: 10%;
+	margin-left: 20%;	
+}
+#social {
+	align:right;
+	float:left;
+	margin-top: 3%;
+	margin-left: 20%;
+}
+#step1 {
+	background-image: url(../images/background1.jpg);
+	background-size: cover;
+	text-align: center;
+	width: 100%;
+	height:700px;
+	margin-bottom: 0px;
+	background-image: fixed;
+}
+#step2 {
+	background-image: url(../images/background2.jpg);
+	background-size: cover;
+	text-align: center;
+	width: 100%;
+	height:650px;
+	background-image: fixed;
+}
 #step3 {
 	background-image: url(../images/background3.jpg);
 	background-size: cover;
@@ -217,41 +236,43 @@ body {
 	width: 100%;
 	height:650px;
 }
-#resultimage{
-	background-image:url(../images/dish_theatre.png);
-	background-repeat: no-repeat;	
-	width:100%;
-	height:400px;
-	margin-top: 10%;
-	margin-left: 20%;	
+
+#submitQuery {
+	margin-left: 98%;
+	background-color: #DA552C;
+	color:#F5EFDF;
+	border:none !important;
 }
 
-nav {
-	height: 55px;
+#submitQuery:focus {
+	box-shadow: none !important;
 }
-#Footercolumn {
-    float:left;
-    text-align: left;
-    margin-left: 2%;
-}
-#Footercolumn h3 {
-	/*font-family: 'Alfa Slab One', cursive;*/
-	font-family: 'Exo', sans-serif;
-	font-weight: 600; 
-	font-size: 22px;
-	color: #DA552C;
-}
-#Footercolumn2 {
-	text-align:left;
-	float:right;
-}
-.navbar-default {
-	background-color:#F5EEDE !important;
-}
-#social {
-	align:right;
-	float:left;
-	margin-top: 3%;
-	margin-left: 20%;
 
+#submitQuery:hover {
+	opacity:0.8;
+}
+
+#submitEventQuery {
+	background-color: #DA552C;
+	color:#F5EFDF;
+	border:none !important;
+	margin-left: 188%;
+}
+
+#submitEventQuery:hover {
+	opacity:0.8;
+}
+#venueChoices {
+	margin-left: 50px;
+	margin-top:0px; 
+	margin-bottom: 0px;
+	margin-right: 0px;
+	text-align: center;
+	padding-bottom: 0px;
+	background-image:
+	background-size: 0px;
+	background-repeat:no-repeat;
+}
+#venueChoices {
+	margin-top: 15%;
 }
