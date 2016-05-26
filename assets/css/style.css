@@ -4,11 +4,8 @@ body {
 #container{
 	width: 100%;
 }
-#loginPage {
-	/*background-image:url(../images/2.jpg);
-	background-size:cover;	
-	background-attachment:fixed;*/
 
+#loginPage {
 	background-image:url(../images/pg1background.jpg);
 	background-size:cover;
 	background-repeat:no-repeat;
@@ -16,129 +13,31 @@ body {
 	height:650px;
 	margin-top:0px;
 	margin-bottom: 0px;
-	background-image:
-
-}
-#logo {
-	margin-left:0px;
-	padding-top: 5%;
-	margin-top:10px;
-}
-#step1 {
-	background-image: url(../images/background1.jpg);
-	background-size: cover;
-	/*padding-right: -1px;
-	margin-right:50px;*/
-	/*padding-right:-10px;*/
-	/*padding-top:90px;*/
-	text-align: center;
-	/*float:left;*/
-	width: 100%;
-	height:700px;
-	/*margin-top:20px;*/
-	margin-bottom: 0px;
-	background-image: fixed;
-}
-#step2 {
-	background-image: url(../images/background2.jpg);
-	background-size: cover;
-	/*padding-bottom: 0px;*/
-	text-align: center;
-	width: 100%;
-	height:650px;
-	background-image: fixed;
-}
-
-#step3 {
-	background-image: url(../images/background3.jpg);
-	background-size: cover;
-	padding-right: 0px
-	margin-right:0px;
-	padding:0px;
-	padding-bottom: 0px;
-	text-align: center;
-	width: 100%;
-	height:650px;
-}
-
-
-#funimage{
-	margin-top:50px;
-	margin-bottom:0px;
-	margin-left:40%;
-	background-image: url(../images/theatrefaces.png);
-	background-size: 500px, 600px; 
-	/*opacity:.6;*/
-	width:600px;
-	height:350px;
-	background-repeat:no-repeat;
-
-}
-#foodImage{
-	margin-top: 5%;
-	margin-left:30%;
-	margin-right:0px;
-	padding-bottom:0px;
-	text-align: right;
-	background-image: url(../images/dishorange.png); 
-	/*opacity:.6;*/
-	background-size:500px,450px;
-	background-size:cover;
-	width:600px;
-	height:350px;
-
-}
-#restaurants{
-	padding-bottom: 0px;
-	margin-bottom: 0px;
-	margin-left:0px;
-	background-image:;
-	background-size: 0px;
-	background-repeat:no-repeat;
-}
-#venueChoices {
-	margin-left: 50px;
-	margin-top:0px; 
-	margin-bottom: 0px;
-	margin-right: 0px;
-	text-align: center;
-	padding-bottom: 0px;
-	background-image:
-	background-size: 0px;
-	background-repeat:no-repeat;
 }
 #logoRow {
 	margin-top:0%;
 	margin-left:40px;
 	text-align: center;
 }
-
-#resultimage{
-	background-image:url(../images/dish_theatre.png);
-	background-repeat: no-repeat;	
-	width:100%;
-	height:400px;
-	margin-top: 10%;
-	margin-left: 20%;
-	
-}
-
-#funResult {
-	margin-top:0%;
+#logo {
 	margin-left:0px;
-	background-color: ;
+	padding-top: 5%;
+	margin-top:10px;
 }
-#foodResult {
-	margin-top:0%;
-	margin-left:0px;
+#clickButton {
+	margin-left: 14%;
+	border:none !important;
+	background-color: #DA552C;
+	color:#F5EFDF;
 }
-
+#clickButton:hover {
+	opacity:0.8;
+}
 #formRow {
 	margin-left: 39%;
 }
 
 #form-group {
-	/*margin-left: 40%;*/
 	opacity: 0.9;
     background-color: #F5EFDF;
 }
@@ -154,51 +53,39 @@ body {
 .form-horizontal {
 	margin-bottom: 50px;
 }
-#clickButton {
-	margin-left: 14%;
-	border:none !important;
-	background-color: #DA552C;
-	color:#F5EFDF;
-}
 
-#clickButton:hover {
-	opacity:0.8;
+#step1 {
+	background-image: url(../images/background1.jpg);
+	background-size: cover;
+	text-align: center;
+	width: 100%;
+	height:700px;
+	margin-bottom: 0px;
+	background-image: fixed;
 }
-#fsquareResults {
-	padding-top: 20px; 	
-	z-index: 10;
-	top: 10;
-  	left: 0;				
-}
-
-#fsquareResults img {
-	color: white;
-	border:solid 10px #DA552C;
-	/*padding: 10px;*/
-	width: 80%;
-}
-#fsquareResults h3 {
-	color:#8C3E18;
-}
-#fsquareResults p {
-	color:#8C3E18;
-	margin:0px !important;
-}
-#fsquareEventResults {
-	color: white;
-	border:solid 10px #DA552C;
-	/*padding: 10px;*/
-	width: 80%;
-}
-#fsquareEventResults h3 {
-	color:#8C3E18;
-}
-#fsquareEventResults p {
-	color:#8C3E18;
-	margin:0px !important;
+#foodImage{
+	margin-top: 5%;
+	margin-left:30%;
+	margin-right:0px;
+	padding-bottom:0px;
+	text-align: right;
+	background-image: url(../images/dishorange.png); 
+	background-size:500px,450px;
+	background-size:cover;
+	width:600px;
+	height:350px;
+	position:relative;
 }
 #venueChoices {
-	margin-top: 20%;
+	margin-left: 50px;
+	margin-top:0px; 
+	margin-bottom: 0px;
+	margin-right: 0px;
+	text-align: center;
+	padding-bottom: 0px;
+	background-image:
+	background-size: 0px;
+	background-repeat:no-repeat;
 }
 #foodChoices {
 	margin-bottom: 10px;
@@ -217,7 +104,6 @@ body {
 }
 #submitQuery:hover {
 	opacity:0.8;
-
 }
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
 	outline: none !important;
@@ -227,32 +113,121 @@ body {
 	color:#F5EFDF;
 	border:none !important;
 }
-.btn .btn-info .Select{
-	background-color: red;
+.btn-info {
+	border:none !important;
+	background-color: #DA552C !important;
+	color:#F5EFDF !important;
+	margin-top:-2%;
 }
-
-
 .btn:hover {
 	opacity:0.8;
+}
+#restaurants{
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	margin-left:0px;
+	background-image:;
+	background-size: 0px;
+	background-repeat:no-repeat;
+}
+#fsquareResults {
+	position:absolute;
+	top: 900px;				
+}
+#fsquareResults img {
+	color: white;
+	border:solid 10px #DA552C;
+	/*padding: 10px;*/
+	width: 80%;
+}
+#fsquareResults h3 {
+	color:#8C3E18;
+	margin-bottom: 1px;
+}
+#fsquareResults p {
+	color:#8C3E18;
+	margin:0px !important;
+}
+
+#step2 {
+	background-image: url(../images/background2.jpg);
+	background-size: cover;
+	text-align: center;
+	width: 100%;
+	height:650px;
+	background-image: fixed;
+}
+#funimage{
+	margin-top:50px;
+	margin-left:35%;
+	background-image: url(../images/theatrefaces.png);
+	background-size: 500px, 600px; 
+	width:600px;
+	height:350px;
+	background-repeat:no-repeat;
+	position:relative;
+}
+#venueChoices {
+	margin-top: 15%;
 }
 #eventChoices {
 	margin-top: 20%;
 	margin-bottom:10px;
-	margin-left: 85%;
+	margin-left: 107%;
 }
 #submitEventQuery {
 	background-color: #DA552C;
 	color:#F5EFDF;
 	border:none !important;
-	margin-left: 166%;
+	margin-left: 188%;
 }
 #submitEventQuery:hover {
 	opacity:0.8;
 }
+#fsquareEventResults {
+	position:absolute;
+	top: 1570px;	
+}
+#fsquareEventResults img{
+	color: white;
+	border:solid 10px #DA552C;
+	width: 80%;
+}
+#fsquareEventResults h3 {
+	color:#8C3E18;
+	margin-bottom: 4px;
+}
+#fsquareEventResults p {
+	color:#8C3E18;
+	margin:0px !important;
+}
+#fsquareEventResults .btn-info {
+	margin-top: 3%;
+}
+
+#step3 {
+	background-image: url(../images/background3.jpg);
+	background-size: cover;
+	padding-right: 0px;
+	margin-right:0px;
+	padding:0px;
+	padding-bottom: 0px;
+	text-align: center;
+	width: 100%;
+	height:650px;
+}
+#resultimage{
+	background-image:url(../images/dish_theatre.png);
+	background-repeat: no-repeat;	
+	width:100%;
+	height:400px;
+	margin-top: 10%;
+	margin-left: 20%;	
+}
 
 nav {
-	height: 70px;
-	}
+	height: 55px;
+}
 #Footercolumn {
     float:left;
     text-align: left;
@@ -277,4 +252,3 @@ nav {
 	margin-left: 20%;
 
 }
-
