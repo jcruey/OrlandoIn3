@@ -4,7 +4,7 @@ $(document).ready(function () {
      choice: "",
      eventchoice: "", 
      price: "",
-     inputInfo: new Firebase("https://project-6671229764144633849.firebaseio.com/"),
+     inputInfo: new Firebase("https://orlandoin3-f5e80.firebaseio.com/"),
      eventprice: "",   
      foodType: ['Japanese', 'American', 'Burgers', 'Vegetarian', 'Seafood', 'Mexican', 'Italian', 'Sushi', 'Steakhouse', "Pizza", 'Cuban', 'Pasta', 'Chinese'],
      eventType: ['Theme Park', "Movie Theater", "Music", "Performing Arts", "Park", "Garden", "Ballet", "Aquarium"],
@@ -112,6 +112,10 @@ $(document).ready(function () {
         var nameInput = $('#inputName').val();
         var name_regex = /^[a-zA-Z]+$/;
 
+        app.inputInfo.push({
+                nameInput
+                });
+
             if (nameInput.length == 0) {
                 $('#modalNameEmpty').modal('show');
                 $("#nameInput").focus();
@@ -210,6 +214,13 @@ $(document).ready(function () {
                 app.inputInfo.push({
                     firebaseFoodSelect
                 });
+
+                app.inputInfo.on("child_added", function(childSnapshot) {
+                    test4 = childSnapshot.val().firebaseFoodSelect.venueName;
+                    console.log(test4);
+                
+                    $('#unload').html(test4);
+                });
                     
 
             });
@@ -251,7 +262,7 @@ $(document).ready(function () {
                     apidataReturn[i] = {
                         venueName: results[i].venue.name,
                         address: results[i].venue.location.formattedAddress,
-                        contact: results[i].venue.contact,
+                        // contact: results[i].venue.contact,
                         venueImage: results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix
                     };
 
@@ -287,11 +298,16 @@ $(document).ready(function () {
                 $('#modalEventSelection').modal('show');
                 console.log(firebaseEventSelect);
 
-                 app.inputInfo.push({
+                app.inputInfo.push({
                     firebaseEventSelect
                 });
                     
-                    
+                app.inputInfo.on("child_added", function(childSnapshot) {
+                    test5 = childSnapshot.val().firebaseEventSelect.address[0];
+                    console.log(test5);
+                
+                    $('#unload').html(test5);
+                });    
 
             }); 
             return false;
