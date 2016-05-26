@@ -115,6 +115,12 @@ $(document).ready(function () {
         app.inputInfo.push({
                 nameInput
                 });
+        app.inputInfo.on("child_added", function(childSnapshot) {
+                    test3 = childSnapshot.val().nameInput;
+                    console.log(test3);
+                
+                    $('#unload1').html(test3);
+                });
 
             if (nameInput.length == 0) {
                 $('#modalNameEmpty').modal('show');
@@ -219,7 +225,7 @@ $(document).ready(function () {
                     test4 = childSnapshot.val().firebaseFoodSelect.venueName;
                     console.log(test4);
                 
-                    $('#unload').html(test4);
+                    $('#unload2').html(test4);
                 });
                     
 
@@ -306,7 +312,7 @@ $(document).ready(function () {
                     test5 = childSnapshot.val().firebaseEventSelect.address[0];
                     console.log(test5);
                 
-                    $('#unload').html(test5);
+                    $('#unload3').html(test5);
                 });    
 
             }); 
