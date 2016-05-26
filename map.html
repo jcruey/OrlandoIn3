@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #map {
+        width: 500px;
+        height: 400px;
+      }
+     
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var mapDiv = document.getElementById('map');
+        var map = new google.maps.Map(mapDiv, {
+          center: {lat: 44.540, lng: -78.546},
+          zoom: 8
+        });
+
+
+        map.set('styles', [
+  {
+    featureType: 'road',
+    elementType: 'geometry',
+    stylers: [
+      { color: '#DA552C' }
+      
+    ]
+  }, {
+    featureType: 'landscape',
+    elementType: 'geometry.fill',
+    stylers: [
+      { color: "#00A79D"}
+    ]
+  }, {
+    featureType: 'landscape',
+    elementType: 'geometry',
+    stylers: [
+      { color: "#F5EFDF" }
+
+    ]
+  }, {
+    featureType: 'poi.school',
+    elementType: 'geometry',
+    stylers: [
+     { color: "#83B1B1"}
+    ]
+  }, {
+    featureType: 'water',
+    elementType: 'geometry.fill',
+    stylers: [
+     { color: "#83B1B1"}
+    ]
+  }, {
+    featureType: "landscape.natural",
+    stylers: [
+      { visibility: "on" }
+    ]
+  }, {
+    featureType: "poi.park",
+    stylers: [
+      { color: "#00A79D" }
+    ]
+  }
+]);
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap"
+        async defer></script>
+  </body>
+</html>
