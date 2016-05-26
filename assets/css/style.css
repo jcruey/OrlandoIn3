@@ -5,8 +5,9 @@ body {
 	width: 100%;
 }
 #map {
-	width: 500px;
-	height: 400px;
+	width:500px;
+	height:400px;
+	float:left;
 }
 #loginPage {
 	background-image:url(../images/pg1background.jpg);
@@ -16,7 +17,6 @@ body {
 	height:650px;
 	margin-top:0px;
 	margin-bottom: 0px;
-	background-image:
 }
 #logoRow {
 	margin-top:0%;

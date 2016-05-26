@@ -111,7 +111,7 @@ $(document).ready(function () {
     },
 
     //Load google map with results
-    // $('#map').hide();
+    
     initMap: function() {
           var myLatLng = {lat: 28.53834, lng: -81.37924};
 
@@ -119,15 +119,65 @@ $(document).ready(function () {
           app.map = new google.maps.Map(document.getElementById('map'), {
             center: myLatLng,
             scrollwheel: false,
-            zoom: 12
+            zoom: 9
+
+
           });
+          app.map.set('styles', [
+              {
+                featureType: 'road',
+                elementType: 'geometry',
+                stylers: [
+                  { color: '#DA552C' }
+                  
+                ]
+              }, {
+                featureType: 'landscape',
+                elementType: 'geometry.fill',
+                stylers: [
+                  { color: "#00A79D"}
+                ]
+              }, {
+                featureType: 'landscape',
+                elementType: 'geometry',
+                stylers: [
+                  { color: "#F5EFDF" }
+
+                ]
+              }, {
+                featureType: 'poi.school',
+                elementType: 'geometry',
+                stylers: [
+                 { color: "#83B1B1"}
+                ]
+              }, {
+                featureType: 'water',
+                elementType: 'geometry.fill',
+                stylers: [
+                 { color: "#83B1B1"}
+                ]
+              }, {
+                featureType: "landscape.natural",
+                stylers: [
+                  { visibility: "on" }
+                ]
+              }, {
+                featureType: "poi.park",
+                stylers: [
+                  { color: "#00A79D" }
+                ]
+              }
+        ]);
+
       }
+
 }
 
    
     app.renderfoodType();
     app.renderpriceType();
     app.initMap();
+    //$('#map').hide();
 
     $('#clickButton').on('click', function() {
         var nameInput = $('#inputName').val();
@@ -146,6 +196,12 @@ $(document).ready(function () {
                 } else {
                 console.log(nameInput);
                 app.inputInfo.push(nameInput);
+                app.inputInfo.on("child_added", function(childSnapshot) {
+                   test3 = childSnapshot.val().nameInput;
+                   console.log(test3);
+               
+                   $('#unload1').html(test3);
+                });
                 $('#modalSuccess').modal('show');
                  $('html,body').animate({
                 scrollTop: $("#step1").offset().top},
@@ -244,7 +300,13 @@ $(document).ready(function () {
                 app.inputInfo.push({
                     firebaseFoodSelect
                 });
-                    
+                app.inputInfo.on("child_added", function(childSnapshot) {
+                   test4 = childSnapshot.val().firebaseFoodSelect.venueImage;
+                   console.log(test4);
+               
+                   $('#unload2').html(test4);
+                   $('#unload2').html('<img src=' + test4 + '>');
+                });  
 
             });
          });
@@ -344,6 +406,12 @@ $(document).ready(function () {
                  app.inputInfo.push({
                     firebaseEventSelect
                     });
+                 app.inputInfo.on("child_added", function(childSnapshot) {
+                   test5 = childSnapshot.val().firebaseEventSelect.address[0];
+                   console.log(test5);
+               
+                   $('#unload3').html(test5);
+                });
                 });
             return false;
     
