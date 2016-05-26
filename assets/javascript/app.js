@@ -5,7 +5,14 @@ $(document).ready(function () {
      eventchoice: "", 
      price: "",
      inputInfo: new Firebase("https://orlandoin3-f5e80.firebaseio.com/"),
-     eventprice: "",   
+     eventprice: "",
+     foodLat: "",
+     foodLng: "",
+     foodSelect: "",
+     eventLat: "",
+     eventLng: "",
+     eventSelect: "",
+     map: "",  
      foodType: ['Japanese', 'American', 'Burgers', 'Vegetarian', 'Seafood', 'Mexican', 'Italian', 'Sushi', 'Steakhouse', "Pizza", 'Cuban', 'Pasta', 'Chinese'],
      eventType: ['Theme Park', "Movie Theater", "Music", "Performing Arts", "Park", "Garden", "Ballet", "Aquarium"],
      priceType: ["$","$$","$$$"],
@@ -101,44 +108,54 @@ $(document).ready(function () {
             app.eventprice = $.trim($('#eventPrices option:selected').attr("data-value"));
             console.log(app.eventprice);
         });
-    }
+    },
+
+    //Load google map with results
+    // $('#map').hide();
+    initMap: function() {
+          var myLatLng = {lat: 28.53834, lng: -81.37924};
+
+          // Create a map object and specify the DOM element for display.
+          app.map = new google.maps.Map(document.getElementById('map'), {
+            center: myLatLng,
+            scrollwheel: false,
+            zoom: 12
+          });
+      }
 }
 
    
     app.renderfoodType();
     app.renderpriceType();
+    app.initMap();
 
     $('#clickButton').on('click', function() {
         var nameInput = $('#inputName').val();
         var name_regex = /^[a-zA-Z]+$/;
 
-        app.inputInfo.push({
-                nameInput
-                });
-        app.inputInfo.on("child_added", function(childSnapshot) {
-                    test3 = childSnapshot.val().nameInput;
-                    console.log(test3);
-                
-                    $('#unload1').html(test3);
-                });
-
             if (nameInput.length == 0) {
                 $('#modalNameEmpty').modal('show');
-                $("#nameInput").focus();
                 return false;
                 }
-            else if (!nameInput.match(name_regex) || nameInput.length == 0) {
+            else if (!nameInput.match(name_regex) || nameInput.length == 0) {   
                 $('#modalNameIllegal').modal('show');
-                $("#nameInput").focus();
+                $('#modalNameIllegal').on('hidden.bs.modal', function (e) {
+                    $('#inputName').val('');
+                    });
                 return false;
                 } else {
                 console.log(nameInput);
+                app.inputInfo.push(nameInput);
                 $('#modalSuccess').modal('show');
-                return true;
+                 $('html,body').animate({
+                scrollTop: $("#step1").offset().top},
+                'slow');
+                return false;
                 }
+                
 
     });
-  
+          
     $('#submitQuery').on('click', function () {   
         var queryURL = "https://api.foursquare.com/v2/venues/explore?near=Orlando,Fl&radius=100000&price=" + app.price + "&openNow=1&venuePhotos=1&query=" + app.choice + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20160523";
         $('#fsquareResults').empty();
@@ -174,14 +191,14 @@ $(document).ready(function () {
                     apidataReturn[i] = {
                         venueName: results[i].venue.name,
                         rating: results[i].venue.rating,
-                        price: results[i].venue.price.message,
-                        currency: results[i].venue.price.currency,
+                        price: results[i].venue.price.message || null,
                         address: results[i].venue.location.formattedAddress,
-                        contact: results[i].venue.contact,
-                        venueImage: results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix
+                        contact: results[i].venue.contact.formattedPhone || results[i].venue.contact.phone || null,
+                        venueImage: results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix,
+                        foodLat: results[i].venue.location.lat,
+                        foodLng: results[i].venue.location.lng
                     };
-
-                    // console.log(results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix);
+                    
                     // console.log(results[i].venue.name);
                     // console.log(results[i].venue.id);
                     // // console.log(results[i].venue.hours.status);
@@ -208,7 +225,11 @@ $(document).ready(function () {
              }
 
              $('#fsquareResults').on('click', 'button', function () {
-                var firebaseFoodSelect = apidataReturn[$(this).attr("data-value")]
+                var firebaseFoodSelect = apidataReturn[$(this).attr("data-value")];
+                app.foodLat = apidataReturn[$(this).attr("data-value")].foodLat;
+                app.foodLng = apidataReturn[$(this).attr("data-value")].foodLng;
+                app.foodSelect = apidataReturn[$(this).attr("data-value")].venueName;
+                console.log(app.foodLatLng);
                 $('#fsquareResults').empty();
                 $('#foodChoices').hide();
                 $('#priceChoices').hide();
@@ -216,16 +237,12 @@ $(document).ready(function () {
                 $('#modalFoodSelection').modal('show');
                 console.log(firebaseFoodSelect);
 
+                $('html,body').animate({
+                scrollTop: $("#step2").offset().top},
+                'slow');
 
                 app.inputInfo.push({
                     firebaseFoodSelect
-                });
-
-                app.inputInfo.on("child_added", function(childSnapshot) {
-                    test4 = childSnapshot.val().firebaseFoodSelect.venueName;
-                    console.log(test4);
-                
-                    $('#unload2').html(test4);
                 });
                     
 
@@ -268,13 +285,14 @@ $(document).ready(function () {
                     apidataReturn[i] = {
                         venueName: results[i].venue.name,
                         address: results[i].venue.location.formattedAddress,
-                        // contact: results[i].venue.contact,
-                        venueImage: results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix
+                        contact: results[i].venue.contact || null,
+                        venueImage: results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix,
+                        eventLat: results[i].venue.location.lat,
+                        eventLng: results[i].venue.location.lng
                     };
 
                     // console.log(results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix);
                     console.log(results[i].venue.name);
-                    console.log(results[i].venue.contact);
                     // console.log(results[i].venue.id);
                     // // console.log(results[i].venue.hours.status);
                     // console.log(results[i].venue.price.tier);
@@ -298,28 +316,37 @@ $(document).ready(function () {
 
              $('#fsquareEventResults').on('click', 'button', function () {
                 var firebaseEventSelect = apidataReturn[$(this).attr("data-value")]
+                app.eventLat = apidataReturn[$(this).attr("data-value")].eventLat;
+                app.eventLng = apidataReturn[$(this).attr("data-value")].eventLng;
+                app.eventSelect = apidataReturn[$(this).attr("data-value")].venueName;
+                console.log(app.eventLatLng);
                 $('#fsquareEventResults').empty();
                 $('#eventChoices').hide();
                 $('#submitEventQuery').hide();
                 $('#modalEventSelection').modal('show');
                 console.log(firebaseEventSelect);
+                $('html,body').animate({
+                scrollTop: $("#step3").offset().top},
+                'slow');
+                // Create a marker and set its position.
+                  var foodMarker = new google.maps.Marker({
+                    map: app.map,
+                    position: {lat: app.foodLat, lng: app.foodLng},
+                    title: app.foodSelect
+                  });
+                  var eventMarker = new google.maps.Marker({
+                    map: app.map,
+                    position: {lat: app.eventLat, lng: app.eventLng},
+                    title: app.eventSelect
+                  });
+                $('#map').show();
 
-                app.inputInfo.push({
+                 app.inputInfo.push({
                     firebaseEventSelect
+                    });
                 });
-                    
-                app.inputInfo.on("child_added", function(childSnapshot) {
-                    test5 = childSnapshot.val().firebaseEventSelect.address[0];
-                    console.log(test5);
-                
-                    $('#unload3').html(test5);
-                });    
-
-            }); 
             return false;
     
         });
     });
 });
-
-      
