@@ -342,13 +342,13 @@ $(document).ready(function () {
                 scrollTop: $("#step2").offset().top},
                 'slow');
                 
-                var updates = {};
-                  updates['users/' + app.nameInput + '/' + "foodVenue:"] = postData;
-                  return firebase.database().ref().update(updates);
+                // var updates = {};
+                //   updates['users/' + app.nameInput + '/' + "foodVenue:"] = postData;
+                //   return firebase.database().ref().update(updates);
                 
-                // var pushFoodVenue = firebase.database().ref('users/' + app.nameInput).set({
-                //         foodVenue: app.firebaseFoodSelect,
-                //       });
+                var pushFoodVenue = firebase.database().ref('users/' + app.nameInput).set({
+                        foodVenue: app.firebaseFoodSelect,
+                      });
                 
                 //returns the data from Firebase
                firebase.database().ref('users/' + app.nameInput + '/foodVenue:').on('value', function(snapshot) {
@@ -481,14 +481,14 @@ $(document).ready(function () {
                 $('#map').show();
 
                 // pushes the data to firebase
-                var updates = {};
-                  updates['users/' + app.nameInput + '/' + "eventVenue:"] = postData;
-                  return firebase.database().ref().update(updates);
+                // var updates = {};
+                //   updates['users/' + app.nameInput + '/' + "eventVenue:"] = postData;
+                //   return firebase.database().ref().update(updates);
 
-                // var pushEventVenue = firebase.database().ref('users/' + app.nameInput).set({
-                //         foodVenue: app.firebaseFoodSelect,
-                //         eventVenue: app.firebaseEventSelect
-                //       });
+                var pushEventVenue = firebase.database().ref('users/' + app.nameInput).set({
+                        foodVenue: app.firebaseFoodSelect,
+                        eventVenue: app.firebaseEventSelect
+                      });
                  //returns the data from firebase
                  firebase.database().ref('users/' + app.nameInput + '/eventVenue').on('value', function(snapshot) {
                       updateEventVenue(eventElement, snapshot.val());
