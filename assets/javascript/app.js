@@ -351,19 +351,19 @@ $(document).ready(function () {
                       });
                 
                 //returns the data from Firebase
-               firebase.database().ref('users/' + app.nameInput).on('value', function(snapshot) {
-                   console.log(snapshot.val()foodVenue);                 
-                   var fbFoodImage = snapshot.val().firebaseFoodSelect.venueImage;
-                   var fbFoodName = snapshot.val().firebaseFoodSelect.venueName;
-                   var fbFoodAddress = snapshot.val().firebaseFoodSelect.address;
-                   // console.log(fbFoodImage);
+                firebase.database().ref('/users/' + nameInput).once('value').then(function(snapshot) {
+                    console.log(snapshot().val());
+                    var fbFoodImage = snapshot.val().firebaseFoodSelect.venueImage;
+                    var fbFoodName = snapshot.val().firebaseFoodSelect.venueName;
+                    var fbFoodAddress = snapshot.val().firebaseFoodSelect.address;
+                    // console.log(fbFoodImage);
 
-                   // writes the returned data to the page
-                   $('#unload2').html('<img src=' + fbFoodImage + '>');
-                   $('#upload2N').html('<h3>' + fbFoodName + '</h3>');  
-                   $('#upload2A').html('<p>Address: ' + fbFoodAddress[0] + '</p>');
-                   $('#upload2A').append('<p>' + fbFoodAddress[1] + '</p>');
-                   $('#upload2A').append('<p>' + fbFoodAddress[2] + '</p>');
+                    // writes the returned data to the page
+                    $('#unload2').html('<img src=' + fbFoodImage + '>');
+                    $('#upload2N').html('<h3>' + fbFoodName + '</h3>');  
+                    $('#upload2A').html('<p>Address: ' + fbFoodAddress[0] + '</p>');
+                    $('#upload2A').append('<p>' + fbFoodAddress[1] + '</p>');
+                    $('#upload2A').append('<p>' + fbFoodAddress[2] + '</p>');
                 });  
 
             });
