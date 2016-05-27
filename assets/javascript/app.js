@@ -4,7 +4,7 @@ $(document).ready(function () {
      choice: "",
      eventchoice: "", 
      price: "",
-     inputInfo: new Firebase("https://orlandoin3-f5e80.firebaseio.com/"),
+     // inputInfo: new Firebase("https://orlandoin3jc.firebaseio.com/"),
      eventprice: "",
      foodLat: "",
      foodLng: "",
@@ -13,12 +13,11 @@ $(document).ready(function () {
      eventLng: "",
      eventSelect: "",
      map: "",  
-     foodType: ['Japanese', 'American', 'Burgers', 'Vegetarian', 'Seafood', 'Mexican', 'Italian', 'Sushi', 'Steakhouse', "Pizza", 'Cuban', 'Pasta', 'Chinese'],
-     eventType: ['Theme Park', "Movie Theater", "Music", "Performing Arts", "Park", "Garden", "Ballet", "Aquarium"],
+     foodType: ['Choose a Food Type', 'Japanese', 'American', 'Burgers', 'Vegetarian', 'Seafood', 'Mexican', 'Italian', 'Sushi', 'Steakhouse', "Pizza", 'Cuban', 'Pasta', 'Chinese'],
+     eventType: ['Choose a Place Type', 'Theme Park', "Movie Theater", "Music", "Performing Arts", "Park", "Water Park", "Night Club", "Museum", "Aquarium"],
      priceType: ["$","$$","$$$"],
      eventPrice: ["$","$$","$$$"],
-
- 
+  
 
     // Function to create the menu that will pull choices from FS Api
     renderfoodType: function (){ 
@@ -50,6 +49,7 @@ $(document).ready(function () {
         // Event listener for the Food filter dropdown selection
         $('#foodChoices').on('change', function() {
             app.choice = $.trim($('#foodChoices option:selected').html());
+            console.log(app.choice);
         });
         // Event listener for the event filter dropdown selection
         $('#eventChoices').on('change', function() {
@@ -111,7 +111,7 @@ $(document).ready(function () {
         // Event listener for the Event filter dropdown selection
         $('#eventPrices').on('change', function() {
             app.eventprice = $.trim($('#eventPrices option:selected').attr("data-value"));
-            console.log(app.eventprice);
+            // console.log(app.eventprice);
         });
     },
 
@@ -190,8 +190,16 @@ $(document).ready(function () {
       }
 
 }
+    // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyC65gezJxJLEcezILeiqxmD8HaeROhw8oM",
+        authDomain: "orlandoin3jc.firebaseapp.com",
+        databaseURL: "https://orlandoin3jc.firebaseio.com",
+        storageBucket: "orlandoin3jc.appspot.com",
+      };
+      firebase.initializeApp(config);
 
-   
+
     app.renderfoodType();
     app.renderpriceType();
     app.initMap();
@@ -213,14 +221,16 @@ $(document).ready(function () {
                     });
                 return false;
                 } else {
-                console.log(nameInput);
-                app.inputInfo.push(nameInput);
-                app.inputInfo.on("child_added", function(childSnapshot) {
-                   test3 = childSnapshot.val().nameInput;
-                   console.log(test3);
+                // console.log(nameInput);
+                
+                      app.inputInfo.database().ref('users/' + nameInput).set({
+                        foodVenue: object,
+                        eventVenue: object
+                      });
+    
+                   // console.log(test3);
                
-                   $('#unload1').html(test3);
-                });
+                   $('#unload1').html(nameInput);
                 $('#modalSuccess').modal('show');
                  $('html,body').animate({
                 scrollTop: $("#step1").offset().top},
@@ -233,7 +243,7 @@ $(document).ready(function () {
     
     // Creates an Ajax query with the above food filters and returns data from the Foursquare API      
     $('#submitQuery').on('click', function () {   
-        var queryURL = "https://api.foursquare.com/v2/venues/explore?near=Orlando,Fl&radius=100000&price=" + app.price + "&openNow=1&venuePhotos=1&query=" + app.choice + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20160523";
+        var queryURL = "https://api.foursquare.com/v2/venues/explore?near=Orlando,Fl&radius=60000&price=" + app.price + "&openNow=1&mode=url&venuePhotos=1&query=" + app.choice + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20160301";
         $('#fsquareResults').empty();
         $.ajax({
                 url: queryURL,
@@ -246,7 +256,22 @@ $(document).ready(function () {
                 // console.log(results);
 
                 app.shuffleArray(results);
-                // console.log(results);
+                console.log(results);
+
+                // checks results for missing properties and splices objects from return
+                for (var i = results.length - 1; i > -1; i--) {
+                    if (results[i].venue.name == undefined) {
+                        results.splice(i, 1);
+                    } else if (results[i].venue.price == undefined) {
+                        results.splice(i, 1);
+                    } else if (results[i].venue.photos.count == 0) {
+                        results.splice(i, 1)
+                    } else if (results[i].venue.contact.phone == undefined) {
+                        results.splice(i, 1)
+                    }  else if (results[i].venue.contact.formattedPhone == undefined) {
+                        results.splice(i, 1)
+                    }
+                }
                 
                 //--------------------------------
 
@@ -257,8 +282,8 @@ $(document).ready(function () {
 
                     apidataReturn[i] = {
                         venueName: results[i].venue.name,
-                        rating: results[i].venue.rating,
-                        price: results[i].venue.price.message || null,
+                        rating: results[i].venue.rating, 
+                        price: results[i].venue.price.message,
                         address: results[i].venue.location.formattedAddress,
                         contact: results[i].venue.contact.formattedPhone || results[i].venue.contact.phone || null,
                         venueImage: results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix,
@@ -271,8 +296,8 @@ $(document).ready(function () {
                     // // console.log(results[i].venue.hours.status);
                     // console.log(results[i].venue.price.tier);
                     // console.log(results[i].venue.location.formattedAddress);
-                    console.log(results[i].venue.name);
-                    console.log(results[i].venue.contact);
+                    // console.log(results[i].venue.name);
+                    // console.log(results[i].venue.contact);
 
                 //     //------------Writes retrieved API data to page--------------------
                     var venueDiv = $("<div class='col-lg-4'>");
@@ -299,13 +324,13 @@ $(document).ready(function () {
                 app.foodLat = apidataReturn[$(this).attr("data-value")].foodLat;
                 app.foodLng = apidataReturn[$(this).attr("data-value")].foodLng;
                 app.foodSelect = apidataReturn[$(this).attr("data-value")].venueName;
-                console.log(app.foodLatLng);
+                // console.log(app.foodLatLng);
                 $('#fsquareResults').empty();
                 $('#foodChoices').hide();
                 $('#priceChoices').hide();
                 $('#submitQuery').hide();
                 $('#modalFoodSelection').modal('show');
-                console.log(firebaseFoodSelect);
+                // console.log(firebaseFoodSelect);
 
                 //scrolls to the results page
                 $('html,body').animate({
@@ -313,30 +338,23 @@ $(document).ready(function () {
                 'slow');
                 
                 //pushes the selected data to Firebase
-                app.inputInfo.push({
+                app.inputInfo.user.push({
                     firebaseFoodSelect
                 });
                 
                 //returns the data from Firebase
-                app.inputInfo.on("child_added", function(childSnapshot) {
-                   test4 = childSnapshot.val().firebaseFoodSelect.venueImage;
-                   testNF = childSnapshot.val().firebaseFoodSelect.venueName;
-                   testAF = childSnapshot.val().firebaseFoodSelect.address;
-                   console.log(test4);
+                app.inputInfo.user.on("child_added", function(childSnapshot) {
+                   fbFoodImage = childSnapshot.val().firebaseFoodSelect.venueImage;
+                   fbFoodName = childSnapshot.val().firebaseFoodSelect.venueName;
+                   fbFoodAddress = childSnapshot.val().firebaseFoodSelect.address;
+                   // console.log(fbFoodImage);
 
                    // writes the returned data to the page
-                   $('#unload2').html('<img src=' + test4 + '>');
-                   $('#upload2N').html('<h3>' + testNF + '</h3>');  
-                   $('#upload2A').html('<p>Address: ' + testAF[0] + '</p>');
-                   $('#upload2A').append('<p>' + testAF[1] + '</p>');
-                   $('#upload2A').append('<p>' + testAF[2] + '</p>');
-                   //$('#unload2').html(test4);
-                   $('#unload2').html('<img src=' + test4 + '>');
-                   $('#upload2N').html('<h3>' + testNF + '</h3>');                  
-                   $('#upload2A').html('<p>Address: ' + testAF[0] + '</p>');
-                   $('#upload2A').append('<p>' + testAF[1] + '</p>');
-                   $('#upload2A').append('<p>' + testAF[2] + '</p>');
-                   // $('#unload2').html('<p>' + test3 + '</p>');
+                   $('#unload2').html('<img src=' + fbFoodImage + '>');
+                   $('#upload2N').html('<h3>' + fbFoodName + '</h3>');  
+                   $('#upload2A').html('<p>Address: ' + fbFoodAddress[0] + '</p>');
+                   $('#upload2A').append('<p>' + fbFoodAddress[1] + '</p>');
+                   $('#upload2A').append('<p>' + fbFoodAddress[2] + '</p>');
                 });  
 
             });
@@ -345,7 +363,7 @@ $(document).ready(function () {
     
     // Creates an Ajax query with the above food filters and returns data from the Foursquare API 
     $('#submitEventQuery').on('click', function () {   
-        var queryURL = "https://api.foursquare.com/v2/venues/explore?&near=Orlando,Fl&price=" + app.eventprice + "&venuePhotos=1&query=" + app.eventchoice + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20160501&m=foursquare";
+        var queryURL = "https://api.foursquare.com/v2/venues/explore?&near=Orlando,Fl&price=" + app.eventprice + "&venuePhotos=1&query=" + app.eventchoice + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20160301&m=foursquare";
         $('#fsquareEventResults').empty();
         $.ajax({
                 url: queryURL,
@@ -360,12 +378,43 @@ $(document).ready(function () {
                 app.shuffleArray(results);
                 console.log(results);
                 
+                // checks results for missing properties and splices objects from return
+                for (var i = results.length - 1; i > -1; i--) {
+                    if (results[i].venue.photos.count == 0) {
+                        results.splice(i, 1);
+                    } else if (results[i].venue.rating == undefined) {
+                        results.splice(i, 1);
+                    }  
+                }
+
+
                 //--------------------------------
 
             var apidataReturn = [];   
 
                 for (var i = 0; i < 3; i++) {
+                    console.log(results[i].venue.contact);
+                    if (results[i].venue.contact == undefined) {
+                        apidataReturn[i] = {
+                        venueName: results[i].venue.name,
+                        address: results[i].venue.location.formattedAddress,
+                        venueImage: results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix,
+                        eventLat: results[i].venue.location.lat,
+                        eventLng: results[i].venue.location.lng
+                    };
 
+                     //     //------------Writes retrieved API data to page--------------------
+                    var venueDiv = $("<div class='col-lg-4'>");
+                    var selectBtn = $('<button>');
+                        selectBtn.addClass("btn btn-info Select");
+                        selectBtn.text("Select");
+                        selectBtn.attr('data-value', [i]);
+                    venueDiv.append('<img src='+apidataReturn[i].venueImage+'>');
+                    venueDiv.append('<h3>'+apidataReturn[i].venueName+'</h3>');
+                    venueDiv.append('<p>Address: '+apidataReturn[i].address[0]+'<br>'+apidataReturn[i].address[1]+'<br>'+apidataReturn[i].address[2]+'</p>');
+                    venueDiv.append(selectBtn);
+                $('#fsquareEventResults').prepend(venueDiv);
+                  } else { 
                     apidataReturn[i] = {
                         venueName: results[i].venue.name,
                         address: results[i].venue.location.formattedAddress,
@@ -374,14 +423,6 @@ $(document).ready(function () {
                         eventLat: results[i].venue.location.lat,
                         eventLng: results[i].venue.location.lng
                     };
-
-                    // console.log(results[i].venue.photos.groups[0].items[0].prefix+"500x300"+results[i].venue.photos.groups[0].items[0].suffix);
-                    console.log(results[i].venue.name);
-                    // console.log(results[i].venue.id);
-                    // // console.log(results[i].venue.hours.status);
-                    // console.log(results[i].venue.price.tier);
-                    // console.log(results[i].venue.location.formattedAddress);
-                    // console.log(results[i].venue.rating);
 
                 //     //------------Writes retrieved API data to page--------------------
                     var venueDiv = $("<div class='col-lg-4'>");
@@ -395,6 +436,7 @@ $(document).ready(function () {
                     venueDiv.append('<p>Address: '+apidataReturn[i].address[0]+'<br>'+apidataReturn[i].address[1]+'<br>'+apidataReturn[i].address[2]+'</p>');
                     venueDiv.append(selectBtn);
                 $('#fsquareEventResults').prepend(venueDiv);
+            }
 
              }
              // Listens for the select buttons dynamically created above
@@ -405,12 +447,12 @@ $(document).ready(function () {
                 app.eventLat = apidataReturn[$(this).attr("data-value")].eventLat;
                 app.eventLng = apidataReturn[$(this).attr("data-value")].eventLng;
                 app.eventSelect = apidataReturn[$(this).attr("data-value")].venueName;
-                console.log(app.eventLatLng);
+                // console.log(app.eventLatLng);
                 $('#fsquareEventResults').empty();
                 $('#eventChoices').hide();
                 $('#submitEventQuery').hide();
                 $('#modalEventSelection').modal('show');
-                console.log(firebaseEventSelect);
+                // console.log(firebaseEventSelect);
                 $('html,body').animate({
                 scrollTop: $("#step3").offset().top},
                 'slow');
@@ -427,23 +469,20 @@ $(document).ready(function () {
                   });
                 $('#map').show();
 
-               app.inputInfo.push({
+               app.inputInfo.user.event.push({
                     firebaseEventSelect
                     });
-                 app.inputInfo.on("child_added", function(childSnapshot) {
-                   test5 = childSnapshot.val().firebaseEventSelect.venueImage;
-                   testNE = childSnapshot.val().firebaseEventSelect.venueName;
-                   testAE = childSnapshot.val().firebaseEventSelect.address;
+                 app.inputInfo.user.event.on("child_added", function(childSnapshot) {
+                   fbEventImage = childSnapshot.val().firebaseEventSelect.venueImage;
+                   fbEventName = childSnapshot.val().firebaseEventSelect.venueName;
+                   fbEventAddress = childSnapshot.val().firebaseEventSelect.address;
 
-                   //console.log(test5);
-                   console.log(testAE);
-               
-                   //$('#unload3').html(test5);
-                   $('#unload3').html('<img src=' + test5 + '>');
-                   $('#upload3N').html('<h3>' + testNE + '</h3>');
-                   $('#upload3A').html('<p>Address: ' + testAE[0] + '</p>');
-                   $('#upload3A').append('<p>' + testAE[1] + '</p>');
-                   $('#upload3A').append('<p>' + testAE[2] + '</p>');
+                   
+                   $('#unload3').html('<img src=' + fbEventImage + '>');
+                   $('#upload3N').html('<h3>' + fbEventName + '</h3>');
+                   $('#upload3A').html('<p>Address: ' + fbEventAddress[0] + '</p>');
+                   $('#upload3A').append('<p>' + fbEventAddress[1] + '</p>');
+                   $('#upload3A').append('<p>' + fbEventAddress[2] + '</p>');
                 });
                 });
             return false;
