@@ -353,6 +353,7 @@ $(document).ready(function () {
                 //returns the data from Firebase
                firebase.database().ref('users/' + app.nameInput + '/foodVenue:').on('value', function(snapshot) {
                       updateFoodVenue(foodElement, snapshot.val());
+                      console.log(snapshot);
                
                    var fbFoodImage = snapshot.val().firebaseFoodSelect.venueImage;
                    var fbFoodName = snapshot.val().firebaseFoodSelect.venueName;
@@ -492,7 +493,8 @@ $(document).ready(function () {
                  //returns the data from firebase
                  firebase.database().ref('users/' + app.nameInput + '/eventVenue').on('value', function(snapshot) {
                       updateEventVenue(eventElement, snapshot.val());
-                    });
+                      console.log(snapshot);
+                                   
                    var fbEventImage = snapshot.val().firebaseEventSelect.venueImage;
                    var fbEventName = snapshot.val().firebaseEventSelect.venueName;
                    var fbEventAddress = snapshot.val().firebaseEventSelect.address;
@@ -503,6 +505,7 @@ $(document).ready(function () {
                    $('#upload3A').html('<p>Address: ' + fbEventAddress[0] + '</p>');
                    $('#upload3A').append('<p>' + fbEventAddress[1] + '</p>');
                    $('#upload3A').append('<p>' + fbEventAddress[2] + '</p>');
+                });
                 });
                 });
             return false;
