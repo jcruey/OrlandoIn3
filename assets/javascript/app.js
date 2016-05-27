@@ -324,14 +324,12 @@ $(document).ready(function () {
                    testAF = childSnapshot.val().firebaseFoodSelect.address;
                    console.log(test4);
 
-<<<<<<< HEAD
                    // writes the returned data to the page
                    $('#unload2').html('<img src=' + test4 + '>');
                    $('#upload2N').html('<h3>' + testNF + '</h3>');  
                    $('#upload2A').html('<p>Address: ' + testAF[0] + '</p>');
                    $('#upload2A').append('<p>' + testAF[1] + '</p>');
                    $('#upload2A').append('<p>' + testAF[2] + '</p>');
-=======
                    //$('#unload2').html(test4);
                    $('#unload2').html('<img src=' + test4 + '>');
                    $('#upload2N').html('<h3>' + testNF + '</h3>');                  
@@ -339,7 +337,6 @@ $(document).ready(function () {
                    $('#upload2A').append('<p>' + testAF[1] + '</p>');
                    $('#upload2A').append('<p>' + testAF[2] + '</p>');
                    // $('#unload2').html('<p>' + test3 + '</p>');
->>>>>>> fc3c55d9c90169877ec67f60c4222aeb6551f1f1
                 });  
 
             });
