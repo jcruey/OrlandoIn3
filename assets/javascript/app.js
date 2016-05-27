@@ -12,6 +12,7 @@ $(document).ready(function () {
      eventLat: "",
      eventLng: "",
      eventSelect: "",
+     nameInput: "",
      map: "",  
      foodType: ['Choose a Food Type', 'Japanese', 'American', 'Burgers', 'Vegetarian', 'Seafood', 'Mexican', 'Italian', 'Sushi', 'Steakhouse', "Pizza", 'Cuban', 'Pasta', 'Chinese'],
      eventType: ['Choose a Place Type', 'Theme Park', "Movie Theater", "Music", "Performing Arts", "Park", "Water Park", "Night Club", "Museum", "Aquarium"],
@@ -208,6 +209,7 @@ $(document).ready(function () {
     // Validates the username input and pushes to Firebase and uses modals to provide feedback
     $('#clickButton').on('click', function() {
         var nameInput = $('#inputName').val();
+        app.nameInput = nameInput;
         var name_regex = /^[a-zA-Z]+$/;
 
             if (nameInput.length == 0) {
@@ -338,8 +340,8 @@ $(document).ready(function () {
                 'slow');
                 
                 //pushes the selected data to Firebase
-                app.inputInfo.user.push({
-                    firebaseFoodSelect
+                firebase.database().ref('users/' + app.nameInput).push({
+                    foodVenue: firebaseFoodSelect
                 });
                 
                 //returns the data from Firebase
@@ -469,8 +471,8 @@ $(document).ready(function () {
                   });
                 $('#map').show();
 
-               app.inputInfo.user.event.push({
-                    firebaseEventSelect
+               firebase.database().ref('users/' + app.nameInput).push({
+                    eventVenue: firebaseEventSelect
                     });
                  app.inputInfo.user.event.on("child_added", function(childSnapshot) {
                    fbEventImage = childSnapshot.val().firebaseEventSelect.venueImage;
