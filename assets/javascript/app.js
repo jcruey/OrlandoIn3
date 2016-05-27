@@ -9,6 +9,8 @@ $(document).ready(function () {
      foodLat: "",
      foodLng: "",
      foodSelect: "",
+     firebaseFoodSelect: "",
+     firebaseEventSelect: "",
      eventLat: "",
      eventLng: "",
      eventSelect: "",
@@ -322,6 +324,7 @@ $(document).ready(function () {
              $('#fsquareResults').on('click', 'button', function () {
                 // creates a variable to store the selected object by passing a value for the index
                 var firebaseFoodSelect = apidataReturn[$(this).attr("data-value")];
+                app.firebaseFoodSelect =firebaseFoodSelect;
                 // stores the lat, lng and venue name to create markers for the Google Map
                 app.foodLat = apidataReturn[$(this).attr("data-value")].foodLat;
                 app.foodLng = apidataReturn[$(this).attr("data-value")].foodLng;
@@ -339,10 +342,9 @@ $(document).ready(function () {
                 scrollTop: $("#step2").offset().top},
                 'slow');
                 
-                //pushes the selected data to Firebase
-                firebase.database().ref('users/' + app.nameInput).push({
-                    foodVenue: firebaseFoodSelect
-                });
+                firebase.database().ref('users/' + app.nameInput).set({
+                        foodVenue: app.firebaseFoodSelect,
+                      });
                 
                 //returns the data from Firebase
                 app.inputInfo.user.on("child_added", function(childSnapshot) {
@@ -445,6 +447,7 @@ $(document).ready(function () {
              $('#fsquareEventResults').on('click', 'button', function () {
                 // creates a variable to store the selected object by passing a value for the index
                 var firebaseEventSelect = apidataReturn[$(this).attr("data-value")]
+                app.firebaseEventSelect = firebaseEventSelect;
                 // stores the lat, lng and venue name to create markers for the Google Map
                 app.eventLat = apidataReturn[$(this).attr("data-value")].eventLat;
                 app.eventLng = apidataReturn[$(this).attr("data-value")].eventLng;
@@ -471,9 +474,10 @@ $(document).ready(function () {
                   });
                 $('#map').show();
 
-               firebase.database().ref('users/' + app.nameInput).push({
-                    eventVenue: firebaseEventSelect
-                    });
+               firebase.database().ref('users/' + app.nameInput).set({
+                        foodVenue: app.firebaseFoodSelect,
+                        eventVenue: app.firebaseEventSelect
+                      });
                  app.inputInfo.user.event.on("child_added", function(childSnapshot) {
                    fbEventImage = childSnapshot.val().firebaseEventSelect.venueImage;
                    fbEventName = childSnapshot.val().firebaseEventSelect.venueName;
