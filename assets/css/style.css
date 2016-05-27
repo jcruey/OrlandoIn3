@@ -1,9 +1,12 @@
 body {
 	width:100%;
 }
+/*container DIV for login page, Step 1,2 and 3 pages*/
 #container{
 	width: 100%;
 }
+/*LOGIN PAGE CSS*/
+/*div for the LOGIN PAGE with inital background photo*/
 #loginPage {
 	background-image:url(../images/pg1background.jpg);
 	background-size:cover;
@@ -11,16 +14,19 @@ body {
 	width:100%;
 	height:650px;
 }
+/*outer div for the MAIN LOGO on on the login (landing page)*/
 #logoRow {
 	margin-top:0%;
 	margin-left:40px;
 	text-align: center;
 }
+/*inner div for the MAIN LOGO on the login (landing page)*/
 #logo {
 	margin-left:0px;
 	padding-top: 5%;
 	margin-top:10px;
 }
+/*styles for the CONTINUE button on login page */
 #clickButton {
 	margin-left: 14%;
 	border:none !important;
@@ -30,14 +36,16 @@ body {
 #clickButton:hover {
 	opacity:0.8;
 }
+/*Form on login page*/
 #formRow {
 	margin-left: 39%;
 }
-
+/*login page FORM */
 #form-group {
 	opacity: 0.9;
     background-color: #F5EFDF;
 }
+/*login page FORM  with name input styles */
 .form-control {
 	width:300px !important;
 	opacity: 0.9;
@@ -50,7 +58,9 @@ body {
 .form-horizontal {
 	margin-bottom: 50px;
 }
+/*End Login Page*/
 
+/*STEP1 PAGE CSS*/
 #step1 {
 	background-image: url(../images/background1.jpg);
 	background-size: cover;
@@ -60,6 +70,7 @@ body {
 	margin-bottom: 0px;
 	text-align: center;
 }
+/*div for the PLATE & CUTLERY image on Step 1 page */
 #foodImage{
 	margin-top: 5%;
 	margin-left:30%;
@@ -87,9 +98,11 @@ body {
 #foodChoices {
 	margin-bottom: 10px;
 }
+/*part of the DROP DOWN form on Step 1 page */
 #priceChoices {
 	margin-bottom: 10px;
 }
+/* SUBMIT BUTTON on step 1 page*/
 #submitQuery {
 	margin-left: 98%;
 	background-color: #DA552C;
@@ -102,6 +115,7 @@ body {
 #submitQuery:hover {
 	opacity:0.8;
 }
+/*SUBMIT button in step 1, 2*/
 .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
 	outline: none !important;
 }
@@ -119,6 +133,7 @@ body {
 .btn:hover {
 	opacity:0.8;
 }
+/*Div that SHOWS food results after Query on step 1 page */
 #restaurants{
 	padding-bottom: 0px;
 	margin-bottom: 0px;
@@ -127,6 +142,7 @@ body {
 	background-size: 0px;
 	background-repeat:no-repeat;
 }
+/*FOOD RESULTS after query, on step 1 page*/
 #fsquareResults {
 	position:absolute;
 	top: 900px;				
@@ -145,7 +161,9 @@ body {
 	color:#8C3E18;
 	margin:0px !important;
 }
+/*end step2 page css*/
 
+/*STEP2 PAGE CSS*/
 #step2 {
 	background-image: url(../images/background2.jpg);
 	background-size: cover;
@@ -155,7 +173,8 @@ body {
 	margin-bottom: 0px;
 	text-align: center;
 }
-#funimage{
+/*image div with the THEATER FACES on step 2 page*/
+#funimage {
 	margin-top:50px;
 	margin-left:35%;
 	background-image: url(../images/theatrefaces.png);
@@ -165,14 +184,18 @@ body {
 	background-repeat:no-repeat;
 	position:relative;
 }
+/* This is the div that Contains the DROP DOWN MENU FORM for on step 1 page*/
 #venueChoices {
 	margin-top: 15%;
 }
+/*div for the DROP DOWN MENU for event 
+choices on Step 2 page */
 #eventChoices {
 	margin-top: 20%;
 	margin-bottom:10px;
 	margin-left: 107%;
 }
+/* SUBMIT BUTTON on step 2 page*/
 #submitEventQuery {
 	background-color: #DA552C;
 	color:#F5EFDF;
@@ -182,6 +205,7 @@ body {
 #submitEventQuery:hover {
 	opacity:0.8;
 }
+/* EVENT Results after query, on step 2 page*/
 #fsquareEventResults {
 	position:absolute;
 	top: 1570px;	
@@ -202,6 +226,9 @@ body {
 #fsquareEventResults .btn-info {
 	margin-top: 3%;
 }
+/*end step2 css*/
+
+/*STEP3 PAGE CSS*/
 #step3 {
 	background-image: url(../images/background3.jpg);
 	background-size: cover;
@@ -218,7 +245,7 @@ body {
 }
 #mapSpace {
 	margin-top: 7%;
-	margin-left: 7%;
+	margin-left: 5%;
 }
 #images {
 	margin-top: 4.4%;
@@ -241,16 +268,26 @@ body {
 	width: 100%;
 }
 #resultText {
-	float:right;
+	float:left;
+	color:#8C3E18;
 }
-/*#resultimage{
-	background-image:url(../images/dish_theatre.png);
-	background-repeat: no-repeat;	
-	width:100%;
-	height:auto;
-	margin-top: 10%;
-	margin-left: 20%;	
-}*/
+#upload2N {
+	margin-top: 11%;
+}
+#upload2A p {
+	margin:0;
+}
+#upload3N {
+	margin-top: 22%;
+}
+#upload3A p {
+	margin:0;
+}
+
+/*End step3 page*/
+
+/*FOOTER*/
+/*FOOTER with text, Font is a Google Font*/
 nav {
 	height: 65px;
 }
@@ -259,11 +296,13 @@ nav {
     text-align: left;
     margin-left: 2%;
 }
+/*FOOTER with text, Font is a Google Font*/
 #Footercolumn h3 {
 	font-family: 'Alfa Slab One', cursive;
 	font-size: 21px;
 	color: #DA552C;
 }
+/*FOOTER with SOCIAL LOGOS*/
 #Footercolumn2 {
 	text-align:left;
 	float:right;
@@ -271,10 +310,122 @@ nav {
 .navbar-default {
 	background-color:#F5EEDE !important;
 }
+/*Div that contains SOCIAL MEDIA logos in Footer*/
 #social {
 	align:right;
 	float:left;
 	margin-top: 3%;
 	margin-left: 20%;
+}
+/*end footer*/
+
+/*____________________MEDIA_____________________*/
+
+@media only screen and (max-width: 768px) {
+	    /* For mobile phones: */
+	    
+	 /*MEDIA QUERY - for the CONTINUE button on login page */
+	#clickButton {
+		margin-left: 26%;
+		}
+	 /*MEDIA QUERY - for /*div for the DROP DOWN MENU for event 
+	choices on Step 2 page */*/
+	#eventChoices {
+		margin-top: 20%;
+		margin-bottom:10px;
+		margin-left: 1%;
+		}
+	 /*MEDIA QUERY - for div for the PLATE & CUTLERY image on Step 1 page */
+	#foodImage{
+		margin-top: 5%;
+		margin-left:30%;
+		background-size:500px,450px;
+		background-size:cover;
+		width:200px;
+		height:50%;
+	}
+	 /*MEDIA QUERY - for Footer Text*/
+	#Footercolumn h3 {
+		font-weight: 600; 
+		font-size: 15px;
+
+	 }
+	  /*MEDIA QUERY - for Footer Column with Social logos*/
+	 #Footercolumn2 {
+		/*text-align:;*/
+		float:right;
+		width:100%;
+	}
+	 /*MEDIA QUERY - for login page FORM  with name input styles */
+	.form-control {
+		width:200px !important;
+	}	
+	 /*MEDIA QUERY - for Form on login page*/*/
+	#formRow {
+		margin-left: 30%;
+	}
+	 /*MEDIA QUERY - for theatre faces image on step 2 page */
+	#funimage{
+		margin-top:50px;
+		margin-left:35%;
+		background-size: 200px, 200px; 
+		width:350px;
+	}
+	 /*MEDIA QUERY - for login page*/
+	#loginPage{
+	   	width: 100%;
+		height:50%;
+		margin-top:0px;
+	   }
+	  /*MEDIA QUERY - for log on login page*/
+	 #logo img{
+		margin-left:10%;
+		padding-top: 1%;
+		margin-top:2px;
+		width:200px;
+	}
+
+	 /*MEDIA QUERY - for image on step 3 page*/
+	#resultimage{
+		background-size:300px,200px;;
+		
+		width:350px;
+		height:50%;
+		margin-top: 10%;
+	}
+	/*  MEDIA QUERY - Outer Div For STEP 2 PAGE*/
+	#step1 {
+		width: 100%;
+		height:50%;
+	}
+	/*  MEDIA QUERY - Outer Div For STEP 2 PAGE*/
+	#step2 {
+		width: 100%;
+		height:50%;
+		text-align: right;
+		}
+
+	/* MEDIA QUERY - Outer Div For STEP 3 PAGE*/
+	#step3 {
+		width: 100%;
+		height:50%;
+	}
+	/* SUBMIT BUTTON on step 2 page*/
+	 #submitEventQuery {
+		margin-left: 1%;
+		margin-right:43%;
+	}
+	/* SUBMIT BUTTON on step 1 page*/
+	#submitQuery {
+		margin-left: 45%;
+	}
+	 /*MEDIA QUERY - for div in the footer*/
+	nav {
+		height: 120px;
+	}
+	 /*MEDIA QUERY - for form on step 1 page*/
+	#venueChoices {
+		margin-left: 0px;
+	}
 
 }
