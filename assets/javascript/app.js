@@ -342,15 +342,21 @@ $(document).ready(function () {
                 scrollTop: $("#step2").offset().top},
                 'slow');
                 
-                var pushFoodVenue = firebase.database().ref('users/' + app.nameInput).set({
-                        foodVenue: app.firebaseFoodSelect,
-                      });
+                var updates = {};
+                  updates['users/' + app.nameInput + '/' + "foodVenue:"] = postData;
+                  return firebase.database().ref().update(updates);
+                
+                // var pushFoodVenue = firebase.database().ref('users/' + app.nameInput).set({
+                //         foodVenue: app.firebaseFoodSelect,
+                //       });
                 
                 //returns the data from Firebase
-               pushFoodVenue.on("child_added", function(childSnapshot) {
-                   fbFoodImage = childSnapshot.val().firebaseFoodSelect.venueImage;
-                   fbFoodName = childSnapshot.val().firebaseFoodSelect.venueName;
-                   fbFoodAddress = childSnapshot.val().firebaseFoodSelect.address;
+               firebase.database().ref('users/' + app.nameInput + '/foodVenue:').on('value', function(snapshot) {
+                      updateFoodVenue(foodElement, snapshot.val());
+               
+                   var fbFoodImage = snapshot.val().firebaseFoodSelect.venueImage;
+                   var fbFoodName = snapshot.val().firebaseFoodSelect.venueName;
+                   var fbFoodAddress = snapshot.val().firebaseFoodSelect.address;
                    // console.log(fbFoodImage);
 
                    // writes the returned data to the page
@@ -475,15 +481,21 @@ $(document).ready(function () {
                 $('#map').show();
 
                 // pushes the data to firebase
-                var pushEventVenue = firebase.database().ref('users/' + app.nameInput).set({
-                        foodVenue: app.firebaseFoodSelect,
-                        eventVenue: app.firebaseEventSelect
-                      });
+                var updates = {};
+                  updates['users/' + app.nameInput + '/' + "eventVenue:"] = postData;
+                  return firebase.database().ref().update(updates);
+
+                // var pushEventVenue = firebase.database().ref('users/' + app.nameInput).set({
+                //         foodVenue: app.firebaseFoodSelect,
+                //         eventVenue: app.firebaseEventSelect
+                //       });
                  //returns the data from firebase
-                 pushEventVenue.on("child_added", function(childSnapshot) {
-                   fbEventImage = childSnapshot.val().firebaseEventSelect.venueImage;
-                   fbEventName = childSnapshot.val().firebaseEventSelect.venueName;
-                   fbEventAddress = childSnapshot.val().firebaseEventSelect.address;
+                 firebase.database().ref('users/' + app.nameInput + '/eventVenue').on('value', function(snapshot) {
+                      updateEventVenue(eventElement, snapshot.val());
+                    });
+                   var fbEventImage = snapshot.val().firebaseEventSelect.venueImage;
+                   var fbEventName = snapshot.val().firebaseEventSelect.venueName;
+                   var fbEventAddress = snapshot.val().firebaseEventSelect.address;
 
                    
                    $('#unload3').html('<img src=' + fbEventImage + '>');
