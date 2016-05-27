@@ -342,12 +342,12 @@ $(document).ready(function () {
                 scrollTop: $("#step2").offset().top},
                 'slow');
                 
-                firebase.database().ref('users/' + app.nameInput).set({
+                var pushFoodVenue = firebase.database().ref('users/' + app.nameInput).set({
                         foodVenue: app.firebaseFoodSelect,
                       });
                 
                 //returns the data from Firebase
-                app.inputInfo.user.on("child_added", function(childSnapshot) {
+               pushFoodVenue.on("child_added", function(childSnapshot) {
                    fbFoodImage = childSnapshot.val().firebaseFoodSelect.venueImage;
                    fbFoodName = childSnapshot.val().firebaseFoodSelect.venueName;
                    fbFoodAddress = childSnapshot.val().firebaseFoodSelect.address;
@@ -474,11 +474,13 @@ $(document).ready(function () {
                   });
                 $('#map').show();
 
-               firebase.database().ref('users/' + app.nameInput).set({
+                // pushes the data to firebase
+                var pushEventVenue = firebase.database().ref('users/' + app.nameInput).set({
                         foodVenue: app.firebaseFoodSelect,
                         eventVenue: app.firebaseEventSelect
                       });
-                 app.inputInfo.user.event.on("child_added", function(childSnapshot) {
+                 //returns the data from firebase
+                 pushEventVenue.on("child_added", function(childSnapshot) {
                    fbEventImage = childSnapshot.val().firebaseEventSelect.venueImage;
                    fbEventName = childSnapshot.val().firebaseEventSelect.venueName;
                    fbEventAddress = childSnapshot.val().firebaseEventSelect.address;
