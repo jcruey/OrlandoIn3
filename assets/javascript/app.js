@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    // Initial array of GIFs
+    // app object with variables and functions
     var app = {
      choice: "",
      eventchoice: "", 
@@ -23,33 +23,35 @@ $(document).ready(function () {
     // Function to create the menu that will pull choices from FS Api
     renderfoodType: function (){ 
 
-        // clears the div prior to adding new drop down
+        // clears the div prior to adding new drop down values
         $('#foodChoices').empty();
         $('#eventChoices').empty();
 
-        // Loops through the array of categories
+        // Loops through the array of food filters to populate drop down menu
         for (var i = 0; i < app.foodType.length; i++){
 
-            var a = $('<option>'); // This code creates the list items for the dropdown
-            a.text(app.foodType[i]); // Provided the initial button text
-            a.attr('data-name', app.foodType[i]); // Adds data attribute with category name
+            var a = $('<option>'); // This code creates the option items for the dropdown
+            a.text(app.foodType[i]); // Provides the initial button text
+            a.attr('data-name', app.foodType[i]); // Adds data attribute with filter name
             a.addClass('foodBtn'); // Adds a class for later use as selector to the menu choice
-            $('#foodChoices').append(a); // Added the dropdown choices to the HTML
+            $('#foodChoices').append(a); // Adds the dropdown choices to the HTML
         }
 
-        // Loops through the array of categories
+        // Loops through the array of event filters to populate drop down menu
         for (var i = 0; i < app.eventType.length; i++){
 
-            var a = $('<option>'); // This code creates the list items for the dropdown
-            a.text(app.eventType[i]); // Provided the initial button text
-            a.attr('data-name', app.eventType[i]); // Adds data attribute with category name
+            var a = $('<option>'); // This code creates the option items for the dropdown
+            a.text(app.eventType[i]); // Provides the initial button text
+            a.attr('data-name', app.eventType[i]); // Adds data attribute with filter name
             a.addClass('eventBtn'); // Adds a class for later use as selector to the menu choice
-            $('#eventChoices').append(a); // Added the dropdown choices to the HTML
+            $('#eventChoices').append(a); // Adds the dropdown choices to the HTML
         }
 
+        // Event listener for the Food filter dropdown selection
         $('#foodChoices').on('change', function() {
             app.choice = $.trim($('#foodChoices option:selected').html());
         });
+        // Event listener for the event filter dropdown selection
         $('#eventChoices').on('change', function() {
             app.eventchoice = $.trim($('#eventChoices option:selected').html());
             console.log(app.eventchoice);
@@ -65,53 +67,67 @@ $(document).ready(function () {
         $('#priceChoices').empty();
         $('#eventPrices').empty();
 
-        // Loops through the array of categories
+        // Loops through the array to create the price filter drop down
         for (var i = 0; i < app.priceType.length; i++){
 
-            var b = $('<option>'); // This code creates the list items for the dropdown
+            var b = $('<option>'); // This code creates the option items for the dropdown
             if (app.priceType[i] == "$") {
-                b.attr('data-value', "1"); // Adds data attribute with price point
+                b.attr('data-value', "1"); // Adds data attribute with price filter
             } else if (app.priceType[i] == "$$") {
-                b.attr('data-value', "2"); // Adds data attribute with price point
+                b.attr('data-value', "2"); // Adds data attribute with price filter
             } else if (app.priceType[i] == "$$$") {
-                b.attr('data-value', "3"); // Adds data attribute with price point
+                b.attr('data-value', "3"); // Adds data attribute with price filter
             }; // else if (app.priceType[i] == "$$$$") {
-            //     b.attr('data-value', "4"); // Adds data attribute with price point
+            //     b.attr('data-value', "4"); // Adds data attribute with price filter
             // };
             b.text(app.priceType[i]); // Provided the initial button text
             b.addClass('priceBtn'); // Adds a class for later use as selector to the menu choice
             $('#priceChoices').append(b); // Added the dropdown choices to the HTML
         } 
 
-        // Loops through the array of categories
+        // Loops through the array to create the price filter drop down
         for (var i = 0; i < app.eventPrice.length; i++){
 
-            var c = $('<option>'); // This code creates the list items for the dropdown
+            var c = $('<option>'); // This code creates the option items for the dropdown
             if (app.eventPrice[i] == "$") {
-                c.attr('data-value', "1"); // Adds data attribute with price point
+                c.attr('data-value', "1"); // Adds data attribute with price filter
             } else if (app.eventPrice[i] == "$$") {
-                c.attr('data-value', "2"); // Adds data attribute with price point
+                c.attr('data-value', "2"); // Adds data attribute with price filter
             } else if (app.eventPrice[i] == "$$$") {
-                c.attr('data-value', "3"); // Adds data attribute with price point
+                c.attr('data-value', "3"); // Adds data attribute with price filter
             }; // else if (app.eventPrice[i] == "$$$$") {
-            //     b.attr('data-value', "4"); // Adds data attribute with price point
+            //     b.attr('data-value', "4"); // Adds data attribute with price filter
             // };
-            c.text(app.eventPrice[i]); // Provided the initial button text
+            c.text(app.eventPrice[i]); // Provides the initial button text
             c.addClass('eventPriceBtn'); // Adds a class for later use as selector to the menu choice
-            $('#eventPrices').append(c); // Added the dropdown choices to the HTML
+            $('#eventPrices').append(c); // Adds the dropdown choices to the HTML
         } 
 
+        // Event listener for the food price filter dropdown selection
         $('#priceChoices').on('change', function() {
             app.price = $.trim($('#priceChoices option:selected').attr("data-value"));
         });
+        
+        // Event listener for the Event filter dropdown selection
         $('#eventPrices').on('change', function() {
             app.eventprice = $.trim($('#eventPrices option:selected').attr("data-value"));
             console.log(app.eventprice);
         });
     },
 
-    //Load google map with results
+    // function to shuffle the array of returned objects to randomize the results
+    shuffleArray: function(a) {
+            var j, x, i;
+            for (i = a.length; i; i -= 1) {
+                j = Math.floor(Math.random() * i);
+                x = a[i - 1];
+                a[i - 1] = a[j];
+                a[j] = x;
+            }
+            return a;
+        },
     
+    //Load google map of Orlando frmo the google maps javascript API
     initMap: function() {
           var myLatLng = {lat: 28.53834, lng: -81.37924};
 
@@ -122,7 +138,9 @@ $(document).ready(function () {
             zoom: 9
 
 
-          });
+          }); 
+          
+          // creates custom map styles to match theme of app
           app.map.set('styles', [
               {
                 featureType: 'road',
@@ -179,6 +197,7 @@ $(document).ready(function () {
     app.initMap();
     //$('#map').hide();
 
+    // Validates the username input and pushes to Firebase and uses modals to provide feedback
     $('#clickButton').on('click', function() {
         var nameInput = $('#inputName').val();
         var name_regex = /^[a-zA-Z]+$/;
@@ -211,7 +230,8 @@ $(document).ready(function () {
                 
 
     });
-          
+    
+    // Creates an Ajax query with the above food filters and returns data from the Foursquare API      
     $('#submitQuery').on('click', function () {   
         var queryURL = "https://api.foursquare.com/v2/venues/explore?near=Orlando,Fl&radius=100000&price=" + app.price + "&openNow=1&venuePhotos=1&query=" + app.choice + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20160523";
         $('#fsquareResults').empty();
@@ -221,25 +241,16 @@ $(document).ready(function () {
             })
             .done(function(response) {
                 
+                // stores the returned data at the proper level of the object from Foursquare
                 var results = response.response.groups[0].items;
                 // console.log(results);
 
-                function shuffleArray (a) {
-                        var j, x, i;
-                        for (i = a.length; i; i -= 1) {
-                            j = Math.floor(Math.random() * i);
-                            x = a[i - 1];
-                            a[i - 1] = a[j];
-                            a[j] = x;
-                        }
-                        return a;
-                    }
-
-                shuffleArray(results);
+                app.shuffleArray(results);
                 // console.log(results);
                 
                 //--------------------------------
 
+            // creates a variable to store the object data in an array for easy retrieval from Firebase    
             var apidataReturn = [];   
 
                 for (var i = 0; i < 3; i++) {
@@ -280,8 +291,11 @@ $(document).ready(function () {
 
              }
 
+             // Listens for the select buttons dynamically created above
              $('#fsquareResults').on('click', 'button', function () {
+                // creates a variable to store the selected object by passing a value for the index
                 var firebaseFoodSelect = apidataReturn[$(this).attr("data-value")];
+                // stores the lat, lng and venue name to create markers for the Google Map
                 app.foodLat = apidataReturn[$(this).attr("data-value")].foodLat;
                 app.foodLng = apidataReturn[$(this).attr("data-value")].foodLng;
                 app.foodSelect = apidataReturn[$(this).attr("data-value")].venueName;
@@ -293,25 +307,36 @@ $(document).ready(function () {
                 $('#modalFoodSelection').modal('show');
                 console.log(firebaseFoodSelect);
 
+                //scrolls to the results page
                 $('html,body').animate({
                 scrollTop: $("#step2").offset().top},
                 'slow');
-
+                
+                //pushes the selected data to Firebase
                 app.inputInfo.push({
                     firebaseFoodSelect
                 });
+                
+                //returns the data from Firebase
                 app.inputInfo.on("child_added", function(childSnapshot) {
                    test4 = childSnapshot.val().firebaseFoodSelect.venueImage;
+                   testNF = childSnapshot.val().firebaseFoodSelect.venueName;
+                   testAF = childSnapshot.val().firebaseFoodSelect.address;
                    console.log(test4);
-               
-                   $('#unload2').html(test4);
+
+                   // writes the returned data to the page
                    $('#unload2').html('<img src=' + test4 + '>');
+                   $('#upload2N').html('<h3>' + testNF + '</h3>');  
+                   $('#upload2A').html('<p>Address: ' + testAF[0] + '</p>');
+                   $('#upload2A').append('<p>' + testAF[1] + '</p>');
+                   $('#upload2A').append('<p>' + testAF[2] + '</p>');
                 });  
 
             });
          });
     });
-
+    
+    // Creates an Ajax query with the above food filters and returns data from the Foursquare API 
     $('#submitEventQuery').on('click', function () {   
         var queryURL = "https://api.foursquare.com/v2/venues/explore?&near=Orlando,Fl&price=" + app.eventprice + "&venuePhotos=1&query=" + app.eventchoice + "&client_id=HFKDICL41ZZNTP24SRFKEJVQBRX3CPRUUMQVERB3DW4BKP5Q&client_secret=MUWOHZZTQGRSAFO5XIQNBHOV01Q22PBSYIJBCJKNJLB4GYRH&v=20160501&m=foursquare";
         $('#fsquareEventResults').empty();
@@ -321,21 +346,11 @@ $(document).ready(function () {
             })
             .done(function(response) {
                 
+                // stores the returned data at the proper level of the object from Foursquare
                 var results = response.response.groups[0].items;
                 // console.log(results);
 
-                function shuffleArray (a) {
-                        var j, x, i;
-                        for (i = a.length; i; i -= 1) {
-                            j = Math.floor(Math.random() * i);
-                            x = a[i - 1];
-                            a[i - 1] = a[j];
-                            a[j] = x;
-                        }
-                        return a;
-                    }
-
-                shuffleArray(results);
+                app.shuffleArray(results);
                 console.log(results);
                 
                 //--------------------------------
@@ -375,9 +390,11 @@ $(document).ready(function () {
                 $('#fsquareEventResults').prepend(venueDiv);
 
              }
-
+             // Listens for the select buttons dynamically created above
              $('#fsquareEventResults').on('click', 'button', function () {
+                // creates a variable to store the selected object by passing a value for the index
                 var firebaseEventSelect = apidataReturn[$(this).attr("data-value")]
+                // stores the lat, lng and venue name to create markers for the Google Map
                 app.eventLat = apidataReturn[$(this).attr("data-value")].eventLat;
                 app.eventLng = apidataReturn[$(this).attr("data-value")].eventLng;
                 app.eventSelect = apidataReturn[$(this).attr("data-value")].venueName;
@@ -390,7 +407,7 @@ $(document).ready(function () {
                 $('html,body').animate({
                 scrollTop: $("#step3").offset().top},
                 'slow');
-                // Create a marker and set its position.
+                // Create markers and set their position to selections.
                   var foodMarker = new google.maps.Marker({
                     map: app.map,
                     position: {lat: app.foodLat, lng: app.foodLng},
@@ -403,14 +420,23 @@ $(document).ready(function () {
                   });
                 $('#map').show();
 
-                 app.inputInfo.push({
+               app.inputInfo.push({
                     firebaseEventSelect
                     });
                  app.inputInfo.on("child_added", function(childSnapshot) {
-                   test5 = childSnapshot.val().firebaseEventSelect.address[0];
-                   console.log(test5);
+                   test5 = childSnapshot.val().firebaseEventSelect.venueImage;
+                   testNE = childSnapshot.val().firebaseEventSelect.venueName;
+                   testAE = childSnapshot.val().firebaseEventSelect.address;
+
+                   //console.log(test5);
+                   console.log(testAE);
                
-                   $('#unload3').html(test5);
+                   //$('#unload3').html(test5);
+                   $('#unload3').html('<img src=' + test5 + '>');
+                   $('#upload3N').html('<h3>' + testNE + '</h3>');
+                   $('#upload3A').html('<p>Address: ' + testAE[0] + '</p>');
+                   $('#upload3A').append('<p>' + testAE[1] + '</p>');
+                   $('#upload3A').append('<p>' + testAE[2] + '</p>');
                 });
                 });
             return false;
