@@ -351,10 +351,8 @@ $(document).ready(function () {
                       });
                 
                 //returns the data from Firebase
-               firebase.database().ref('users/' + app.nameInput + '/foodVenue:').on('value', function(snapshot) {
-                      updateFoodVenue(foodElement, snapshot.val());
-                      console.log(snapshot);
-               
+               firebase.database().ref('users/' + app.nameInput).on('value', function(snapshot) {
+                   console.log(snapshot);                
                    var fbFoodImage = snapshot.val().firebaseFoodSelect.venueImage;
                    var fbFoodName = snapshot.val().firebaseFoodSelect.venueName;
                    var fbFoodAddress = snapshot.val().firebaseFoodSelect.address;
@@ -491,13 +489,11 @@ $(document).ready(function () {
                         eventVenue: app.firebaseEventSelect
                       });
                  //returns the data from firebase
-                 firebase.database().ref('users/' + app.nameInput + '/eventVenue').on('value', function(snapshot) {
-                      updateEventVenue(eventElement, snapshot.val());
-                      console.log(snapshot);
-                                   
-                   var fbEventImage = snapshot.val().firebaseEventSelect.venueImage;
-                   var fbEventName = snapshot.val().firebaseEventSelect.venueName;
-                   var fbEventAddress = snapshot.val().firebaseEventSelect.address;
+                 firebase.database().ref('users/' + app.nameInput).on('value', function(snapshot) {
+                    console.log(snapshot);            
+                    var fbEventImage = snapshot.val().firebaseEventSelect.venueImage;
+                    var fbEventName = snapshot.val().firebaseEventSelect.venueName;
+                    var fbEventAddress = snapshot.val().firebaseEventSelect.address;
 
                    
                    $('#unload3').html('<img src=' + fbEventImage + '>');
