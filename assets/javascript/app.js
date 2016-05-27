@@ -302,10 +302,19 @@ $(document).ready(function () {
                 });
                 app.inputInfo.on("child_added", function(childSnapshot) {
                    test4 = childSnapshot.val().firebaseFoodSelect.venueImage;
+                   testNF = childSnapshot.val().firebaseFoodSelect.venueName;
+                   testPF = childSnapshot.val().firebaseFoodSelect.contact;
+                   testAF = childSnapshot.val().firebaseFoodSelect.address;
                    console.log(test4);
-               
-                   $('#unload2').html(test4);
+
+                   //$('#unload2').html(test4);
                    $('#unload2').html('<img src=' + test4 + '>');
+                   $('#upload2N').html('<h3>' + testNF + '</h3>');
+                   $('#upload2P').html('<p>Phone: ' + testPF + '</p>');
+                   $('#upload2A').html('<p>Address: ' + testAF[0] + '</p>');
+                   $('#upload2A').append('<p>' + testAF[1] + '</p>');
+                   $('#upload2A').append('<p>' + testAF[2] + '</p>');
+                   // $('#unload2').html('<p>' + test3 + '</p>');
                 });  
 
             });
@@ -407,10 +416,21 @@ $(document).ready(function () {
                     firebaseEventSelect
                     });
                  app.inputInfo.on("child_added", function(childSnapshot) {
-                   test5 = childSnapshot.val().firebaseEventSelect.address[0];
-                   console.log(test5);
+                   test5 = childSnapshot.val().firebaseEventSelect.venueImage;
+                   testNE = childSnapshot.val().firebaseEventSelect.venueName;
+                   testPE = childSnapshot.val().firebaseEventSelect.contact;
+                   testAE = childSnapshot.val().firebaseEventSelect.address;
+
+                   //console.log(test5);
+                   console.log(testAE);
                
-                   $('#unload3').html(test5);
+                   //$('#unload3').html(test5);
+                   $('#unload3').html('<img src=' + test5 + '>');
+                   $('#upload3N').html('<h3>' + testNE + '</h3>');
+                   $('#upload3P').html('<p>Phone: ' + testPE + '</p>');
+                   $('#upload3A').html('<p>Address: ' + testAE[0] + '</p>');
+                   $('#upload3A').append('<p>' + testAE[1] + '</p>');
+                   $('#upload3A').append('<p>' + testAE[2] + '</p>');
                 });
                 });
             return false;

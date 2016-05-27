@@ -4,19 +4,12 @@ body {
 #container{
 	width: 100%;
 }
-#map {
-	width:500px;
-	height:400px;
-	float:left;
-}
 #loginPage {
 	background-image:url(../images/pg1background.jpg);
 	background-size:cover;
-	background-repeat:no-repeat;
+	background-position:center;
 	width:100%;
 	height:650px;
-	margin-top:0px;
-	margin-bottom: 0px;
 }
 #logoRow {
 	margin-top:0%;
@@ -61,11 +54,11 @@ body {
 #step1 {
 	background-image: url(../images/background1.jpg);
 	background-size: cover;
-	text-align: center;
+	background-image: center;
 	width: 100%;
-	height:700px;
+	height:710px;
 	margin-bottom: 0px;
-	background-image: fixed;
+	text-align: center;
 }
 #foodImage{
 	margin-top: 5%;
@@ -156,10 +149,11 @@ body {
 #step2 {
 	background-image: url(../images/background2.jpg);
 	background-size: cover;
-	text-align: center;
+	background-image: center;
 	width: 100%;
 	height:650px;
-	background-image: fixed;
+	margin-bottom: 0px;
+	text-align: center;
 }
 #funimage{
 	margin-top:50px;
@@ -208,29 +202,57 @@ body {
 #fsquareEventResults .btn-info {
 	margin-top: 3%;
 }
-
 #step3 {
 	background-image: url(../images/background3.jpg);
 	background-size: cover;
-	padding-right: 0px;
-	margin-right:0px;
-	padding:0px;
-	padding-bottom: 0px;
-	text-align: center;
+	background-image: center;
 	width: 100%;
 	height:650px;
+	margin-bottom: 0px;
+	text-align: center;
 }
-#resultimage{
+#map {
+	width:475px;
+	height:375px;
+	border:solid 10px #DA552C;
+}
+#mapSpace {
+	margin-top: 7%;
+	margin-left: 7%;
+}
+#images {
+	margin-top: 4.4%;
+}
+#unload2 {
+	margin-top: 10%;
+}
+#unload2 img {
+	border:solid 10px #DA552C;
+	width: 100%;
+	margin-bottom: 10px;
+}
+#resultEvent {
+	float:right;
+}
+#unload3 {
+}
+#unload3 img {
+	border:solid 10px #DA552C;
+	width: 100%;
+}
+#resultText {
+	float:right;
+}
+/*#resultimage{
 	background-image:url(../images/dish_theatre.png);
 	background-repeat: no-repeat;	
 	width:100%;
-	height:400px;
+	height:auto;
 	margin-top: 10%;
 	margin-left: 20%;	
-}
-
+}*/
 nav {
-	height: 55px;
+	height: 65px;
 }
 #Footercolumn {
     float:left;
