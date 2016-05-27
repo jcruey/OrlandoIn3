@@ -490,7 +490,7 @@ $(document).ready(function () {
                       });
                  //returns the data from firebase
                  firebase.database().ref('users/' + app.nameInput).on('value', function(snapshot) {
-                    console.log(snapshot.val()eventVenue);            
+                    console.log(snapshot.val());            
                     var fbEventImage = snapshot.val().firebaseEventSelect.venueImage;
                     var fbEventName = snapshot.val().firebaseEventSelect.venueName;
                     var fbEventAddress = snapshot.val().firebaseEventSelect.address;
