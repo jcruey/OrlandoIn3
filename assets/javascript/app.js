@@ -224,8 +224,8 @@ $(document).ready(function () {
                 // console.log(nameInput);
                 
                       firebase.database().ref('users/' + nameInput).set({
-                        foodVenue: object,
-                        eventVenue: object
+                        foodVenue: app.foodSelect,
+                        eventVenue: app.eventSelect
                       });
     
                    // console.log(test3);
