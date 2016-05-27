@@ -223,7 +223,7 @@ $(document).ready(function () {
                 } else {
                 // console.log(nameInput);
                 
-                      app.inputInfo.database().ref('users/' + nameInput).set({
+                      firebase.database().ref('users/' + nameInput).set({
                         foodVenue: object,
                         eventVenue: object
                       });
