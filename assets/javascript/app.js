@@ -351,8 +351,8 @@ $(document).ready(function () {
                       });
                 
                 //returns the data from Firebase
-                firebase.database().ref('/users/' + nameInput).once('value').then(function(snapshot) {
-                    console.log(snapshot().val());
+                firebase.database().ref('/users/' + app.nameInput).once('value').then(function(snapshot) {
+                    console.log(snapshot.val());
                     var fbFoodImage = snapshot.val().firebaseFoodSelect.venueImage;
                     var fbFoodName = snapshot.val().firebaseFoodSelect.venueName;
                     var fbFoodAddress = snapshot.val().firebaseFoodSelect.address;
