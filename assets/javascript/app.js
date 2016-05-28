@@ -52,12 +52,10 @@ $(document).ready(function () {
         // Event listener for the Food filter dropdown selection
         $('#foodChoices').on('change', function() {
             app.choice = $.trim($('#foodChoices option:selected').html());
-            console.log(app.choice);
         });
         // Event listener for the event filter dropdown selection
         $('#eventChoices').on('change', function() {
             app.eventchoice = $.trim($('#eventChoices option:selected').html());
-            console.log(app.eventchoice);
         });
     },
 
@@ -114,7 +112,7 @@ $(document).ready(function () {
         // Event listener for the Event filter dropdown selection
         $('#eventPrices').on('change', function() {
             app.eventprice = $.trim($('#eventPrices option:selected').attr("data-value"));
-            // console.log(app.eventprice);
+            
         });
     },
 
@@ -225,16 +223,14 @@ $(document).ready(function () {
                     });
                 return false;
                 } else {
-                // console.log(nameInput);
+                    
+                //creates the root structure in Firebase        
+                firebase.database().ref('users/' + nameInput).set({
+                 foodVenue: app.foodSelect,
+                 eventVenue: app.eventSelect
+                });
                 
-                      firebase.database().ref('users/' + nameInput).set({
-                        foodVenue: app.foodSelect,
-                        eventVenue: app.eventSelect
-                      });
-    
-                   // console.log(test3);
-               
-                   // $('#unload1').html(nameInput);
+                //shows a success modal if username is validated
                 $('#modalSuccess').modal('show');
                  $('html,body').animate({
                 scrollTop: $("#step1").offset().top},
@@ -257,10 +253,10 @@ $(document).ready(function () {
                 
                 // stores the returned data at the proper level of the object from Foursquare
                 var results = response.response.groups[0].items;
-                // console.log(results);
 
+                //shuffles the returned data
                 app.shuffleArray(results);
-                console.log(results);
+               
 
                 // checks results for missing properties and splices objects from return
                 for (var i = results.length - 1; i > -1; i--) {
@@ -295,13 +291,6 @@ $(document).ready(function () {
                         foodLng: results[i].venue.location.lng
                     };
                     
-                    // console.log(results[i].venue.name);
-                    // console.log(results[i].venue.id);
-                    // // console.log(results[i].venue.hours.status);
-                    // console.log(results[i].venue.price.tier);
-                    // console.log(results[i].venue.location.formattedAddress);
-                    // console.log(results[i].venue.name);
-                    // console.log(results[i].venue.contact);
 
                 //     //------------Writes retrieved API data to page--------------------
                     var venueDiv = $("<div class='col-lg-4'>");
@@ -329,34 +318,27 @@ $(document).ready(function () {
                 app.foodLat = apidataReturn[$(this).attr("data-value")].foodLat;
                 app.foodLng = apidataReturn[$(this).attr("data-value")].foodLng;
                 app.foodSelect = apidataReturn[$(this).attr("data-value")].venueName;
-                // console.log(app.foodLatLng);
                 $('#fsquareResults').empty();
                 $('#foodChoices').hide();
                 $('#priceChoices').hide();
                 $('#submitQuery').hide();
                 $('#modalFoodSelection').modal('show');
-                // console.log(firebaseFoodSelect);
 
                 //scrolls to the results page
                 $('html,body').animate({
                 scrollTop: $("#step2").offset().top},
                 'slow');
                 
-                // var updates = {};
-                //   updates['users/' + app.nameInput + '/' + "foodVenue:"] = postData;
-                //   return firebase.database().ref().update(updates);
-                
+                //Pushes new values firebase for the current user
                 var pushFoodVenue = firebase.database().ref('users/' + app.nameInput).set({
                         foodVenue: app.firebaseFoodSelect,
                       });
                 
                 //returns the data from Firebase
                 firebase.database().ref('/users/' + app.nameInput).once('value').then(function(snapshot) {
-                    console.log(snapshot.val());
                     var fbFoodImage = snapshot.val().foodVenue.venueImage;
                     var fbFoodName = snapshot.val().foodVenue.venueName;
                     var fbFoodAddress = snapshot.val().foodVenue.address;
-                    // console.log(fbFoodImage);
 
                     // writes the returned data to the page
                     $('#unload2').html('<img src=' + fbFoodImage + '>');
@@ -382,10 +364,8 @@ $(document).ready(function () {
                 
                 // stores the returned data at the proper level of the object from Foursquare
                 var results = response.response.groups[0].items;
-                // console.log(results);
 
                 app.shuffleArray(results);
-                // console.log(results);
                 
                 // checks results for missing properties and splices objects from return
                 for (var i = results.length - 1; i > -1; i--) {
@@ -457,12 +437,10 @@ $(document).ready(function () {
                 app.eventLat = apidataReturn[$(this).attr("data-value")].eventLat;
                 app.eventLng = apidataReturn[$(this).attr("data-value")].eventLng;
                 app.eventSelect = apidataReturn[$(this).attr("data-value")].venueName;
-                // console.log(app.eventLatLng);
                 $('#fsquareEventResults').empty();
                 $('#eventChoices').hide();
                 $('#submitEventQuery').hide();
                 $('#modalEventSelection').modal('show');
-                // console.log(firebaseEventSelect);
                 $('html,body').animate({
                 scrollTop: $("#step3").offset().top},
                 'slow');
@@ -480,22 +458,17 @@ $(document).ready(function () {
                 $('#map').show();
 
                 // pushes the data to firebase
-                // var updates = {};
-                //   updates['users/' + app.nameInput + '/' + "eventVenue:"] = postData;
-                //   return firebase.database().ref().update(updates);
-
                 var pushEventVenue = firebase.database().ref('users/' + app.nameInput).set({
                         foodVenue: app.firebaseFoodSelect,
                         eventVenue: app.firebaseEventSelect
                       });
                  //returns the data from firebase
-                 firebase.database().ref('/users/' + app.nameInput).once('value').then(function(snapshot) {
-                    console.log(snapshot.val());            
+                 firebase.database().ref('/users/' + app.nameInput).once('value').then(function(snapshot) {           
                     var fbEventImage = snapshot.val().eventVenue.venueImage;
                     var fbEventName = snapshot.val().eventVenue.venueName;
                     var fbEventAddress = snapshot.val().eventVenue.address;
 
-                   
+                   //Writes the returned data to the page
                    $('#unload3').html('<img src=' + fbEventImage + '>');
                    $('#upload3N').html('<h3>' + fbEventName + '</h3>');
                    $('#upload3A').html('<p>Address: ' + fbEventAddress[0] + '</p>');
