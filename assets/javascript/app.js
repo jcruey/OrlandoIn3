@@ -234,7 +234,7 @@ $(document).ready(function () {
     
                    // console.log(test3);
                
-                   $('#unload1').html(nameInput);
+                   // $('#unload1').html(nameInput);
                 $('#modalSuccess').modal('show');
                  $('html,body').animate({
                 scrollTop: $("#step1").offset().top},
@@ -385,7 +385,7 @@ $(document).ready(function () {
                 // console.log(results);
 
                 app.shuffleArray(results);
-                console.log(results);
+                // console.log(results);
                 
                 // checks results for missing properties and splices objects from return
                 for (var i = results.length - 1; i > -1; i--) {
@@ -489,7 +489,7 @@ $(document).ready(function () {
                         eventVenue: app.firebaseEventSelect
                       });
                  //returns the data from firebase
-                 firebase.database().ref('users/' + app.nameInput).on('value', function(snapshot) {
+                 firebase.database().ref('/users/' + app.nameInput).once('value').then(function(snapshot) {
                     console.log(snapshot.val());            
                     var fbEventImage = snapshot.val().eventVenue.venueImage;
                     var fbEventName = snapshot.val().eventVenue.venueName;
